@@ -1,0 +1,44 @@
+﻿body
+*
+{
+    margin:0;padding:0;
+}
+html,body,.container
+{
+    height:100%;
+}
+.container
+{
+    display:table;
+    width: 100%;
+    margin-top: -50px;
+    padding-top: 50px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+header
+{
+    background: green;
+    height: 50px;
+}
+
+.row
+{
+    height: 100%;
+    display: table-row;
+}
+.col-lg-6.no-float, .col-lg-6.no-float {
+    float: none; /* thanks baxabbit */
+}
+.col-lg-6
+{
+    display: table-cell;
+    background: pink;
+    width: 25%;
+}
+.col-lg-6
+{
+    display: table-cell;
+    background: yellow;
+    width: 75%;
+}

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Loop trought envelope points</title>
+    
+</head>
+<body>
+    <h1>Loop trought enveope points</h1>
+    <button id="loop" onclick="looptrought()">loop</button>
+
+
+<script>
+
+    var CG_Aft_Limitsjson ={
+        "CGEnvelopeID":[1,1,1,1,1,1,2,2,2,2,2,2,2,3,3,3,3,3,3,3,4,4,4,4,4,4,4],
+        "GrossWeight":[23100,24000,26100,33750,37650,38650,23100,24000,27000,33750,37650,38650,39000,23100,24000,27000,33750,37650,38650,39000,24800,26329.34,28200,29028,34150,39730,40750],
+        "BodyStation":[604.92,604.92,601.21,593.7,593.7,590.33,604.92,604.92,599.31,593.7,593.7,590.33,587.64,604.92,604.92,599.31,593.7,593.7,590.33,587.64,604.36,604.36,601.18,600.14,593.7,593.7,591.07]
+    };
+
+    var CG_Fwd_Limitsjson = {
+        "CGEnvelopeID": [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+        "GrossWeight": [23100, 26100, 35500, 38500, 38650, 23100, 27000, 35500, 38650, 39000, 23100, 27000, 35500, 38650, 39000, 24800, 28200, 29028, 30142, 34150, 38836, 39730, 40600, 40750],
+        "BodyStation": [591.45, 586.96, 584.05, 584.72, 584.72, 591.45, 586.74, 584.05, 584.72, 585.06, 591.45, 586.74, 584.05, 584.72, 585.06, 589.95, 585.82, 584.4, 582.48, 582.48, 582.48, 583.33, 585.06, 585.36]
+    };
+
+    
+    var WBLoadsheetdataJson = {
+        "AirframeID": [1, 2, 3, 3],
+        "ID": [1, 2, 3, 4],
+        "Name": ["Bombardier Challenger 300 (38,500 lb MTOW) - all operations", "Bombardier Challenger 300 (38,850 lb MTOW) - all operations", "Bombardier Challenger 300 (38,850 lb MTOW) - all operations", "Bombardier Challenger 350 (40,600 lb MTOW)- all operations"],
+        "Ground": ["1", "1", "1", "1"],
+        "Takeoff": ["1", "1", "1", "1"],
+        "Flight": ["1", "1", "1", "1"]
+    };
+
+    var EnvelopIndex = 2;
+    function looptrought() {
+        var longueur = CG_Aft_Limitsjson.CGEnvelopeID.length;
+        
+        for (i = 0; i < longueur; i++) {
+           // alert(CG_Aft_Limitsjson.GrossWeight[i]);
+            
+            if (CG_Aft_Limitsjson.CGEnvelopeID[i] === EnvelopIndex) {
+                alert(" Aft Limit, Weight =" + CG_Aft_Limitsjson.GrossWeight[i] + ", " + "CG = " + CG_Aft_Limitsjson.BodyStation[i]);
+                
+            };
+        };
+
+        for (i = 0; i < longueur; i++) {
+            // alert(CG_Aft_Limitsjson.GrossWeight[i]);
+
+            if (CG_Fwd_Limitsjson.CGEnvelopeID[i] === EnvelopIndex) {
+                alert("FWD limit, Weight =" + CG_Fwd_Limitsjson.GrossWeight[i] + ", " + "CG = " + CG_Fwd_Limitsjson.BodyStation[i]);
+
+            };
+        };
+
+        
+    };
+
+</script>
+</body>
+</html>

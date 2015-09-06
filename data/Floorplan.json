@@ -1,0 +1,7 @@
+{
+    "Name":["Challenger 300 - plan 1, baseline galley","Challenger 300 - plan 1, baseline galley w/ fwd part","Challenger 300 - plan 1, deluxe galley","Challenger 300 - plan 1, deluxe galley w/ fwd part","Challenger 300 - plan 2, baseline galley","Challenger 300 - plan 2, baseline galley w/ fwd part","Challenger 300 - plan 2, deluxe galley","Challenger 300 - plan 2, deluxe galley w/ fwd part","Challenger 300 - plan 4, baseline galley","Challenger 300 - plan 4, baseline galley w/ fwd part","Challenger 300 - plan 4, deluxe galley","Challenger 300 - plan 4, deluxe galley w/ fwd part","Challenger 350 - plan 1, Galley, Catering-Type","Challenger 350 - plan 1, Galley, Enhanced Self-Serve","Challenger 350 - plan 1, Galley, Flexible Self-Serve","Challenger 350 - plan 1, Galley, Flexible Versatile","Challenger 350 - plan 1, Galley, Jump Seat","Challenger 350 - plan 4, Galley, Enhanced Self-Serve","Challenger 350 - plan 4, Galley, Flexible Self-Serve","Challenger 350 - plan 4, Galley, Flexible Versatile","Challenger 350 - plan 4, Galley, Jump Seat"],
+    "ID":[26,27,28,29,30,31,32,33,34,35,36,37,41,42,39,40,48,52,49,50,53],
+    "AirplaneGroup":["CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300","CL-300"],
+    "Editable":["0","0","0","0","0","0","0","0","0","0","0","0","1","1","1","1","1","1","1","1","1"],
+    "Reference":["","","","","","","","","","","","","","","","","","","","",""]
+}

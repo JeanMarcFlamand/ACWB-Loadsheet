@@ -1,0 +1,8 @@
+{
+    "MissionID":[6],
+    "BurnOrder":["1"],
+    "FuelTankID":["1"],
+    "RampFuel":[2160],
+    "TakeoffFuel":[2160],
+    "LandingFuel":[100]
+}

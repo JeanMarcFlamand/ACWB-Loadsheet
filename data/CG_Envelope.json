@@ -1,0 +1,8 @@
+{
+    "AirframeID":[1,2,3,3],
+    "ID":[1,2,3,4],
+    "Name":["Bombardier Challenger 300 (38,500 lb MTOW) - all operations","Bombardier Challenger 300 (38,850 lb MTOW) - all operations","Bombardier Challenger 300 (38,850 lb MTOW) - all operations","Bombardier Challenger 350 (40,600 lb MTOW)- all operations"],
+    "Ground":["1","1","1","1"],
+    "Takeoff":["1","1","1","1"],
+    "Flight":["1","1","1","1"]
+}

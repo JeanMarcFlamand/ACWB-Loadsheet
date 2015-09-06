@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/thirdpartylibs/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/thirdpartylibs/bootstrap-3.3.4-dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/Loadsheet.css">
+    <!-- Thrid Party Library-->
+    <script language="javascript" type="text/javascript" src="assets/thirdpartylibs/jquery/jquery-2.1.3.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="assets/thirdpartylibs/bootstrap-3.3.4-dist/js/bootstrap.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="assets/thirdpartylibs/bootstrap-3.3.4-dist/js/npm.js" ></script>
+    <script language="javascript" type="text/javascript" src="assets/thirdpartylibs/flot/jquery.flot.js"></script>
+    <script language="javascript" type="text/javascript" src="assets/thirdpartylibs/flot/jquery.flot.resize.js"></script>
+
+
+    <!-- Thrid Party Library on the web-->
+    <!--<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js" type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/bootstrap.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4-dist/js/npm.js" type="text/javascript"></script>
+    <script language="javascript" type="text/javascript" src="http://www.flotcharts.org/flot/jquery.flot.js"></script>
+    <script language="javascript" type="text/javascript" src="http://www.flotcharts.org/flot/jquery.flot.resize.js"></script>--> 
+    
+    <!-- CSS on the web-->
+    <!--<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="css/Loadsheet.css">-->   
+
+
+    <!-- application script-->
+    <script language="javascript" type="text/javascript" src="assets/jsapps/loadsheet.js"></script>
+
+
+</head>
+<body>
+
+    <div class="container-fluid col-md-12" style="background-color:#F2F2F2">
+      
+<!--/menu-->
+        <ul class="nav nav-pills" style="background-color:#B3B3B3">
+            <li class="active"><a href="#">Home</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Load <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Airframes</button></li>
+                    <li><a href="#">Airframes</a></li>
+                    <li><a href="#">Airplanes</a> </li>
+                    <li><a href="#">Loadsheet</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Menu 2</a></li>
+            <li><a href="#">Menu 3</a></li>
+        </ul>
+             
+        
+<!--Loadsheet calcs-->  
+        <div class="panel col-md-6 collapse-group"  style="background-color:#E6E6E6;margin:2px ">
+
+            
+<!--Loadsheet Header-->                 
+                <div class="row">
+                    <div class="col-md-6 ">Description</div>
+                    <div class="col-md-2 ">Weight (lb)</div>
+                    <div class="col-md-2 ">CG (in) </div>
+                    <div class="col-md-2 ">%MAC</div>
+                    
+                </div>           
+<!--TEW-->
+                
+                <div class="row" style="background-color:#B3B3B3">
+                    <div class="col-md-6 ">TEW - True Empty Weight </div>
+                    <div class="col-md-2 ">xxxx </div>
+                    <div class="col-md-2 ">xxxx </div>
+                    <div class="col-md-2 ">xx.x </div>    
+                </div>
+                
+<!--Operating Items-->
+   <!--Crew--> 
+                <div class="row" style="background-color:#CCCCCC;">
+  
+
+                    <div class="col-md-12 collapse-group LS-LH-col">
+     
+                        <div class="row collapse">
+                            <div class="col-md-6 ">Description </div>
+                            <div class="col-md-2">Weight (lb) </div>
+                            <div class="col-md-2 ">CG (in) </div>
+                            <div class="col-md-2"></div>
+                        </div>
+
+                        <div class="row collapse">
+                            <div class="col-md-6 "> Pilot/Co-Pilot </div>
+                            <div class="col-md-2 "> 390 </div>
+                            <div class="col-md-2 "> 280 </div>
+                            <div class="col-md-2 ">  </div>
+                        </div>
+                        <div class="row collapse">
+                            <div class="col-md-6 "> Crew Baggages </div>
+                            <div class="col-md-2 "> 60 </div>
+                            <div class="col-md-2 "> 280 </div>
+                            <div class="col-md-2 ">  </div>
+                        </div>
+
+                        <div class="row collapse">
+                            <div class="col-md-6 "> Flight Manual </div>                            
+                            <div class="col-md-2 "> 30 </div>
+                            <div class="col-md-2 "> 360.1 </div>
+                            <div class="col-md-2 ">  </div>
+                        </div>
+
+
+<!--Total Crews Items-->
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <p><a class="btn" href="#">Crews »</a>- TOTAL ITEMS</p>
+                            </div>
+                            <div class="col-md-2 ">400</div>
+                            <div class="col-md-2 ">601.5</div>
+                            <div class="col-md-2 "></div>
+                        </div>
+
+                    </div>
+ 
+                </div>
+
+   <!--Galley-->
+                <div class="row" style="background-color:#CCCCCC;" > 
+                    <div class="col-md-12 collapse-group LS-LH-col">
+                        <div class="row collapse">
+                            <div class="col-md-1 ">Zone </div>
+                            <div class="col-md-4 ">Description</div>
+                            <div class="col-md-1 ">Max</div>
+                            <div class="col-md-2 ">Weight (lb)</div>
+                            <div class="col-md-2 ">CG (in) </div>
+                                            
+                        </div>
+                        <div class="row collapse">
+                            <div class="col-md-1 ">A </div>
+                            <div class="col-md-4 ">Wine</div>
+                            <div class="col-md-1 ">40</div>
+                            <div class="col-md-2 ">40</div>
+                            <div class="col-md-2 ">300</div>
+                            
+                        </div>
+                        <div class="row collapse">
+                            <div class="col-md-1 ">F </div>
+                            <div class="col-md-4 ">meal</div>
+                            <div class="col-md-1 ">50</div>
+                            <div class="col-md-2 ">40</div>
+                            <div class="col-md-2 ">355</div>
+                         </div>
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <p><a class="btn" href="#">Galley »</a>- TOTAL Galley ITEMS</p>
+                            </div>
+                            <div class="col-md-2 ">90</div>
+                            <div class="col-md-2 ">325</div>
+                            
+                        </div>
+
+                  </div>
+               </div>
+
+    <!--Cabin Items-->
+                <div class="row"  style="background-color:#CCCCCC;" > 
+                    <div class="col-md-12 collapse-group LS-LH-col">
+                        <div class="row collapse">
+                            <div class="col-md-5 ">Description</div>
+                            <div class="col-md-1 ">Max</div>
+                            <div class="col-md-2 ">Weight (lb)</div>
+                            <div class="col-md-2 ">CG (in) </div>
+                        </div>
+                            <div class="row collapse">
+                                <div class="col-md-5 ">Fwd Magazine Racks</div>
+                                <div class="col-md-1 ">20</div>
+                                <div class="col-md-2 ">15</div>
+                                <div class="col-md-2 ">455.2</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 ">
+                                    <p><a class="btn" href="#">Cabin »</a>- TOTAL Cabin ITEMS</p>
+                                </div>
+                                <div class="col-md-2 ">15</div>
+                                <div class="col-md-2 ">455.1</div>
+                            </div>
+
+                        </div>
+
+              </div>
+
+<!--OWE-->              
+                <div class="row" style="background-color:#B3B3B3">
+                        <div class="col-md-6 ">OWE - OPERATING WEIGHT EMPTY </div>
+                        <div class="col-md-2 ">24401 </div>
+                        <div class="col-md-2 ">601.5 </div>
+                        <div class="col-md-2 ">39.9 </div>
+                    </div>
+              
+<!--Payload-->
+                <div class="row" style="background-color:#CCCCCC;"> 
+                    <div class="col-md-12 collapse-group LS-LH-col">
+                        <div class="row collapse">
+                            <div class="col-md-6 ">Description </div>
+                            <div class="col-md-2">Weight (lb) </div>
+                            <div class="col-md-2 ">CG (in) </div>
+                            <div class="col-md-2"></div>
+                        </div>     
+                         
+                         <div class="row collapse ">
+                            <div class="col-md-6 "> Passenger Row 1 R/H </div>
+                            <div class="col-md-2 "> 195</div>
+                            <div class="col-md-2 "> 360.0 </div>
+                            <div class="col-md-2 ">  </div>
+                        </div>
+                       
+                        <div class="row collapse ">
+                            <div class="col-md-6 "> Passenger Row 1 L/H </div>
+                            <div class="col-md-2 "> 195</div>
+                            <div class="col-md-2 "> 360.1 </div>
+                            <div class="col-md-2 ">  </div>
+                        </div>             
+                        
+                        <div class="row collapse ">
+                            <div class="col-md-6 "> Passenger Row 4 L/H </div>
+                            <div class="col-md-2 "> 195</div>
+                            <div class="col-md-2 "> 600.0 </div>
+                            <div class="col-md-2 ">  </div>
+                        </div>            
+                                    
+                        <div class="row collapse ">
+                            <div class="col-md-6 "> Cargo Aft Compartment </div>
+                            <div class="col-md-2 "> 500</div>
+                            <div class="col-md-2 "> 748.5 </div>
+                            <div class="col-md-2 ">  </div>
+                        </div>          
+                                    
+ 
+ <!--Total Payload-->
+                       <div class="row">
+                            <div class="col-md-6 ">
+                                <p><a class="btn" href="#">Payload »</a>- TOTAL PAYLOAD WEIGHT</p>
+                            </div>
+                            <div class="col-md-2 ">1000</div>
+                            <div class="col-md-2 ">600.5</div>
+                            <div class="col-md-2 "></div>
+                        </div>      
+
+                    </div>
+
+                </div>
+
+<!--Fuel-->
+                <div class="row"> 
+                    <div class="col-md-6 collapse-group LS-LH-col">
+
+                        
+
+
+                        
+
+                    </div>
+
+              </div>
+
+<!--ZFW-->      
+                <div class="row" style="background-color:#B3B3B3">
+                    <div class="col-md-6 ">ZFW - ZERO FUEL WEIGHT 28200 lb Max </div>
+                    <div class="col-md-2 ">24596 </div>
+                    <div class="col-md-2 ">600.1 </div>
+                    <div class="col-md-2 ">38.7 </div>
+                </div>
+                
+<!--TOW-->
+                <div class="row" style="background-color:#B3B3B3">
+                    <div class="col-md-6 ">TOW - TAKE OFF WEIGHT xxxxx lb Max </div>
+                    <div class="col-md-2 ">28000 </div>
+                    <div class="col-md-2 ">600.1 </div>
+                    <div class="col-md-2 ">38.7 </div>
+                </div>
+                
+              
+        </div>
+        
+<!--Loadsheet Chart-->
+        <div class="panel col-md-6"  style="width:400px;height:400px;margin:2px; background-color:#E6E6E6; ">  
+            <div id="LoadsheetChart" style="width:100%; height:100%; "></div>
+            <p class="message"></p>
+         </div>
+            
+        </div>
+
+    <!-- Modal select an airframe Json file -->
+    
+   
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Select an Airframe JSON file:</h4>
+                </div>
+                <div class="modal-body">
+                    <label for="files">Select a file: </label>
+                    <input type="file" accept=".json" id="files" />
+                    <output id="result"></output>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+        
+    <script>
+        $('.row .btn').on('click', function (e) {
+            e.preventDefault();
+            var $this = $(this);
+            var $collapse = $this.closest('.collapse-group').find('.collapse');
+            $collapse.collapse('toggle');
+        });
+    </script>           
+  
+
+    
+ 
+</body>
+</html>

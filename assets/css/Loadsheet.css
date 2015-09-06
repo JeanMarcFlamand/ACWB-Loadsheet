@@ -1,0 +1,38 @@
+﻿/**{
+	border:1px solid blue;
+}*/
+
+
+.container-fixed {
+  bottom: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.width10{
+ width:10%;
+}
+
+.width30{
+ width:30%;
+}
+.width40{
+ width:40%;
+}
+
+.row-fixed {
+    height: 100%;
+  overflow-y:scroll;
+}
+.container-fixed .col{
+    height: 100%;
+  overflow-y:scroll;
+}
+
+.LS-LH-col  
+{
+    
+    background-color:sand;
+    height:100%;
+}

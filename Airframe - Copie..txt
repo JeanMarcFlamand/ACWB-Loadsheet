@@ -1,0 +1,18 @@
+{
+    "Name":["BD100-350 (40,600 lb MTOW)","Bombardier Challenger 300 (38,500 lb MTOW)","Bombardier Challenger 300 (38,850 lb MTOW)"],
+    "ID":[3,1,2],
+    "AirplaneGroup":["CL-300","CL-300","CL-300"],
+    "Editable":["1","0","0"],
+    "TakeoffTrimAlgorithm":["Complex","Complex","Complex"],
+    "MaxRampWeight":[40750,38650,39000],
+    "MaxTakeoffWeight":[40600,38500,38850],
+    "MaxLandingWeight":[34150,33750,33750],
+    "MaxZeroFuelWeight":[28200,26100,27000],
+    "MinFlightWeight":[24800,23100,23100],
+    "GearRetractionMoment":[-5700,-5700,-5700],
+    "FlapExtensionMoment":[-4000,-4000,-4000],
+    "MAC_000_CG":[556.67,556.67,556.67],
+    "MAC_100_CG":[668.87,668.87,668.87],
+    "TaxiFuelBurn":[150,150,150],
+    "Reference":["AFM CSP 100-1 rev 2","AFM CSP 100-1 rev 2","AFM CSP 100-1 rev 2"]
+}
