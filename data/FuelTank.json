@@ -1,7 +1,0 @@
-{
-    "FuelSystemID":[1,4],
-    "Name":["Main tanks (both sides)","Main tanks (both sides)"],
-    "Capacity":[2160,2160],
-    "BurnOrder":["1","1"],
-    "ID":[1,6]
-}

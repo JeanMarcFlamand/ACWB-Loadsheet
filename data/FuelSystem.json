@@ -1,8 +1,0 @@
-{
-    "Name":["Bombardier Challenger 300","Bombardier Challenger 350 same as 300"],
-    "AirplaneGroup":["CL-300","CL-300"],
-    "Editable":["0","0"],
-    "BurnoffAlgorithm":["Default","Default"],
-    "ID":[1,4],
-    "Reference":["AFM CSP 100-1 rev 2",""]
-}
