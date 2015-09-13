@@ -1,21 +1,16 @@
 // JavaScript source code
 
-       $('.row .btn').on('click', function (e) {
-           e.preventDefault();
-           var $this = $(this);
-           var $collapse = $this.closest('.collapse-group').find('.collapse');
-           $collapse.collapse('toggle');
-       });
+       //$('.row .btn').on('click', function (e) {
+       //    e.preventDefault();
+       //    var $this = $(this);
+       //    var $collapse = $this.closest('.collapse-group').find('.collapse');
+       //    $collapse.collapse('toggle');
+       //});
           
   
 
     $(function () {
-        //var d1 = [];
-        //for (var i = 0; i < 14; i += 0.5)
-        //    d1.push([i, Math.sin(i)]);
-
-        //var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
-        //var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
+        
         //frame = [[10, 22000], [10, 140000], [45, 140000], [45, 22000], [10, 22000]];
         var envelope = [[20, 71700], [20, 98000], [28, 129700], [38, 129700], [38, 119840], [43, 102200], [43, 94000], [34, 71700], [20, 71700]];
          
@@ -56,52 +51,42 @@
         });
     });
 
-      
-
-    // ref http://jsfiddle.net/0GiS0/nDVYd/
-
- //   LoadAirplanesData = function(){
-    window.onload = function () {
-        //Check File API support
-        if (window.File && window.FileList && window.FileReader) {
-            var filesInput = document.getElementById("files");
-
-            filesInput.addEventListener("change", function (event) {
-
-                var files = event.target.files; //FileList object
-                var output = document.getElementById("result");
-                
-                for (var i = 0; i < files.length; i++) {
-                    var file = files[i];
-                    
-                    //Only plain text
+   
 
 
-                    var picReader = new FileReader();
+    function  handleFileSelect() {
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
 
-                    picReader.addEventListener("load", function (event) {
+        } else {
+            alert('The File APIs are not fully supported in this browser.');
+            return;
+        }
 
-                        var textFile = event.target;
-                        
-
-                        var div = document.createElement("div");
-
-                        div.innerText = textFile.result;
-                        output.insertBefore(div, null);
-                        var myDB = JSON.parse(textFile);
-
-                        alert(mydb.GrossWeight[2]);
-                    });
-
-
-                    //Read the text file
-                    picReader.readAsText(file);
-                    
-                }
-
-            });
+        input = document.getElementById('fileinput');
+        if (!input) {
+            alert("Um, couldn't find the fileinput element.");
+        }
+        else if (!input.files) {
+            alert("This browser doesn't seem to support the `files` property of file inputs.");
+        }
+        else if (!input.files[0]) {
+            alert("Please select a file before clicking 'Load'");
         }
         else {
-            console.log("Your browser does not support File API");
+            file = input.files[0];
+            fr = new FileReader();
+            fr.onload = receivedText;
+            fr.readAsText(file);
+            
         }
+    }
+
+    function receivedText() {
+        //Lire le fichier ACEnvelopes.json et remplacer les valeur de la varialble envelope
+        var mydb = JSON.parse(fr.result);
+        alert(mydb.Envelopes.Envelpope_ID[2])
+        alert(mydb.Envelopes.CG_MAC[2]);
+        alert(mydb.Envelopes.Weight_Imp[2]);
+        
+        alert(envelope.lenght);
     }
