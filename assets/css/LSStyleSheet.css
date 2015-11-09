@@ -42,3 +42,7 @@ header
     background: yellow;
     width: 75%;
 }
+#OP_CG1.form-control.input-sm.text-right
+{
+    background: yellow;
+}

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <input id="Weight1" type='text' onclick='UpdtWght1()' />
+    <input id="CG1" type='text' onclick='UpdtCG1()' />
+    <input id="Tweight1" type='text' />
+    <input id="TCG1" type='text' />
+    <br>
+    <input id="Weight2" type='text' onclick='UpdtWght2()' />
+    <input id="CG2" type='text' onclick='UpdtCG2()' />
+    <input id="Tweight2" type='text' />
+    <input id="TCG2" type='text' />
+    <br>
+    <input id="Weight3" type='text' onclick='UpdtWght3()' />
+    <input id="CG3" type='text' onclick='UpdtCG3()' />
+    <input id="Tweight3" type='text' />
+    <input id="TCG3" type='text' />
+    <br>
+    <input id="Weight4" type='text' onclick='UpdtWght4()' />
+    <input id="CG4" type='text' onclick='UpdtCG4()' />
+    <input id="Tweight4" type='text' />
+    <input id="TCG4" type='text' />
+    <br>
+    <input id="Weight5" type='text' onclick='UpdtWght5()' />
+    <input id="CG5" type='text' onclick='UpdtCG5()' />
+    <input id="Tweight5" type='text' />
+    <input id="TCG5" type='text' />
+    <br>
+
+
+
+    <input type='button' onclick='helloWorld();return false;' value='Click me to see Hello World in an alert...' />
+    <p id="demo">555</p>
+
+    <script>
+
+    function helloWorld() {
+    var row= 5;
+    var column= 5;
+    var moment =0;
+    var matrix = new Array();
+
+    for (i=0;i<row;i++) {
+                        matrix[i]=new array();
+                        for (j=0;j<column;j++) {
+     if(j==2){
+        alert("j=2");
+         moment = moment + matrix[i][j-2] * matrix[i][j-1];
+         matrix[i][j]= moment;
+         alert ( "weight (matrix[i][j-2]): " + matrix[i][j-2] + " CG (matrix[i][j-1]): " + matrix[i][j-1]+  " Cummulative moment: " + matrix[i][j]);
+     } else if(j==3){
+     	alert("J=3");
+     }else if(j==4){
+     	alert("J=4");
+     }
+  matrix[i][j]=i+j;
+ }
+}
+
+    console.log('called function helloWorld()');
+    alert('Hello World from a JavaScript function showing an alert.');
+    alert( matrix[19][2]);
+    document.getElementById("demo").innerHTML = matrix.length;
+
+    }
+    </script>
+</body>
+</html>
