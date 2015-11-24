@@ -64,20 +64,16 @@
                     <div class="col-md-6 ">Description</div>
                     <div class="col-md-2 ">Weight (lb)</div>
                     <div class="col-md-2 ">CG (in) </div>
-                    <div class="col-md-2 ">%MAC</div>
+                    <div class="col-md-2  text-right">%MAC</div>
                     
                 </div>           
 <!--TEW-->
                 
                 <div class="row" style="background-color:#B3B3B3">
                     <div class="col-md-6 ">TEW - True Empty Weight </div>
-                    <div class="col-md-2 "> 
-                        <input class="form-control input-sm text-right" value="222" id="TEW" type="text">
-                    </div>
-                    <div class="col-md-2 ">
-                        <input class="form-control input-sm text-right" value="678.3" id="TEWCG" type="text">
-                    </div>
-                    <div class="col-md-2 ">xx.x </div>    
+                    <div id="W_OWE_OP_TEW" class="col-md-2 text-right ">30000</div>
+                    <div id="CG_OWE_OP_TEW"class="col-md-2 text-right ">678.3</div>
+                    <div class="col-md-2  text-right">xx.x </div>    
                 </div>
                 
 <!--Operating Items-->
@@ -95,47 +91,44 @@
                         </div>
 
                         <div class="row collapse">
-                            <div id="OP_Description1" class="col-md-6 "> Pilot/Co-Pilot </div>
+                            <div id="Crews_Description1" class="col-md-6 "> Pilot/Co-Pilot </div>
                             <div class="col-md-2 ">
-                                <input id="OP_Weight1" class="form-control input-sm text-right" value="390"  type="text">
+                                <input id="Crews_Weight1" value="390"  type="text">
                             </div>
                             <div class="col-md-2 ">
-                                <!--<input id="OP_CG1" class="form-control input-sm text-right" value="280"  type="text">-->
-                                <input id="OP_CG1"  value="280" type="text">
-                            </div>
-                            <div class="col-md-2 ">  </div>
-                        </div>
-                        <div class="row collapse">
-                            <div id="OP_Description2" class="col-md-6 "> Flight attd </div>
-                            <div class="col-md-2 ">
-                                <input id="OP_Weigth2" class="form-control input-sm text-right" value="390"  type="text">
-                            </div>
-                            <div class="col-md-2 ">
-                                <!--<input id="OP_CG2" class="form-control input-sm text-right" value="280"  type="text">-->
-                                <input id="OP_CG2" value="280" type="text">
+                                
+                                <input id="Crews_CG1"  value="280" type="text">
                             </div>
                             <div class="col-md-2 ">  </div>
                         </div>
                         <div class="row collapse">
-                            <div id="OP_Description3"class="col-md-6 "> Crew Baggages </div>
+                            <div id="Crews_Description2" class="col-md-6 "> Flight attd </div>
                             <div class="col-md-2 ">
-                                <input id="OP_Weight3" class="form-control input-sm text-right" value="600"  type="text">
+                                <input id="Crews_Weight2" value="390"  type="text">
                             </div>
+                            <div class="col-md-2">
+                                <input id="Crews_CG2" value="280" type="text">
+                            </div>
+                            <div class="col-md-2">  </div>
+                        </div>
+                        <div class="row collapse">
+                            <div id="Crews_Description3"class="col-md-6 "> Crew Baggages </div>
                             <div class="col-md-2 ">
-                                <!--<input id="OP_CG3" class="form-control input-sm text-right" value="280.4"  type="text">-->
-                                <input id="OP_CG3" value="280.4" type="text">
+                                <input id="Crews_Weight3" value="600"  type="text">
                             </div>
-                            <div class="col-md-2 ">  </div>
+                            <div class="col-md-2">
+                                <input id="Crews_CG3" value="280.4" type="text">
+                            </div>
+                            <div class="col-md-2">  </div>
                         </div>
 
                         <div class="row collapse">
-                            <div class="col-md-6 "> Flight Manual </div>                            
-                            <div class="col-md-2 ">
-                                <input id="OP_Weight4" class="form-control input-sm text-right" value="30"  type="text">
+                            <div class="col-md-6"> Flight Manual </div>                            
+                            <div class="col-md-2">
+                                <input id="Crews_Weight4" value="30"  type="text">
                             </div>
                             <div class="col-md-2 ">
-                                <!--<input id="OP_CG4" class="form-control input-sm text-right" value="360.5" id="OP_CG4" type="text">-->
-                                <input id="OP_CG4" value="360.5" type="text">
+                                <input id="Crews_CG4" value="360.5" type="text">
                             </div>
                             <div class="col-md-2 ">  </div>
                         </div>
@@ -143,11 +136,12 @@
 
 <!--Total Crews Items-->
                         <div class="row">
-                            <div class="col-md-6 ">
-                                <p><a class="btn" href="#">Crews »</a>- TOTAL ITEMS</p>
+                            <div class="col-md-2 ">
+                                <p><a class="btn" href="#">Crews »</a></p>
                             </div>
-                            <div class="col-md-2 text-right ">400</div>
-                            <div class="col-md-2 text-right">601.5</div>
+                            <div class="col-md-4 text-right">Total</div>
+                            <div id="W_OP_CrewsItems" class="col-md-2 text-right ">0</div>
+                            <div id="CG_OP_CrewsItems"class="col-md-2 text-right">601.5</div>
                             <div class="col-md-2 "></div>
                         </div>
 
@@ -171,38 +165,42 @@
                             <div class="col-md-4 ">Wine</div>
                             <div class="col-md-1 text-right">40</div>
                             <div class="col-md-2 ">
-                                <input class="form-control input-sm text-right" value="40" id="G1" type="text">
+                                <input id="G1_Weight1" value="40"  type="text">
                             </div>
                             <div class="col-md-2 ">
-                                <input class="form-control input-sm text-right" value="300" id="GCG1" type="text">
+                                <input id="G1_CG1" value="300" type="text">
                             </div>
                             
                         </div>
                         <div class="row collapse">
                             <div class="col-md-1 ">F </div>
                             <div class="col-md-4 ">meal</div>
-
                             <div class="col-md-1 text-right">50</div>
                             <div class="col-md-2 ">
-                                <input class="form-control input-sm text-right" value="50" id="G2" type="text">
+                                <input id="G1_Weight2" value="50" type="text">
                             </div>
                             <div class="col-md-2 ">
-                                <input class="form-control input-sm text-right" value="355" id="GCG2" type="text">
+                                <input id="G1_CG2" value="300" type="text">
                             </div>
-                         </div>
+                        
+                        </div>
                         <div class="row">
-                            <div class="col-md-6 ">
-                                <p><a class="btn" href="#">Galley »</a>- TOTAL Galley ITEMS</p>
-                            </div>
-                            <div class="col-md-2 text-right ">90</div>
-                            <div class="col-md-2 text-right">325</div>
                             
+                            
+                            
+                            <div class="col-md-2 ">
+                                <p><a class="btn" href="#">Galley »</a></p>
+                            </div>
+                            <div class="col-md-4 text-right">Total</div>
+                            <div id="W_OP_G1Weight" class="col-md-2 text-right ">0</div>
+                            <div id="CG_OP_G1Weight" class="col-md-2 text-right">325</div>
+
                         </div>
 
                   </div>
                </div>
 
-    <!--Cabin Items-->
+    <!--Cabin-->
                 <div class="row"  style="background-color:#CCCCCC;" > 
                     <div class="col-md-12 collapse-group LS-LH-col">
                         <div class="row collapse">
@@ -215,20 +213,60 @@
                                 <div class="col-md-5 ">Fwd Magazine Racks</div>
                                 <div class="col-md-1 text-right">20</div>
                                 <div class="col-md-2 text-right">
-                                    <input class="form-control input-sm text-right" value="15" id="CAB1" type="text">
+                                    <input id="CAB1_Weight1" value="15"  type="text">
                                 </div>
                                 <div class="col-md-2 ">
-                                    <input class="form-control input-sm text-right" value="455.2" id="CABCG2" type="text">
+                                    <input id="CAB1_CG1" value="455.2"  type="text">
                                 </div>
                             </div>
+                        <div class="row collapse">
+                            <div class="col-md-5 ">LH FWD Life Raft compt</div>
+                            <div class="col-md-1 text-right">80</div>
+                            <div class="col-md-2 text-right">
+                                <input id="CAB1_Weight2" value="60" type="text">
+                            </div>
+                            <div class="col-md-2 ">
+                                <input id="CAB1_CG2" value="300" type="text">
+                            </div>
+                        </div>
+                        <div class="row collapse">
+                            <div class="col-md-5 ">RH FWD Life Raft Compt  </div>
+                            <div class="col-md-1 text-right">80</div>
+                            <div class="col-md-2 text-right">
+                                <input id="CAB1_Weight3" value="50" type="text">
+                            </div>
+                            <div class="col-md-2 ">
+                                <input id="CAB1_CG3" value="300" type="text">
+                            </div>
+                        </div>
+                        <div class="row collapse">
+                            <div class="col-md-5 ">Aft Magazine Racks</div>
+                            <div class="col-md-1 text-right">30</div>
+                            <div class="col-md-2 text-right">
+                                <input id="CAB1_Weight4" value="25" type="text">
+                            </div>
+                            <div class="col-md-2 ">
+                                <input id="CAB1_CG4" value="455.2" type="text">
+                            </div>
+                        </div>
+                                
+
 
                             <div class="row">
-                                <div class="col-md-6 ">
-                                    <p><a class="btn" href="#">Cabin »</a>- TOTAL Cabin ITEMS</p>
+                                <div class="col-md-2">
+                                    <p><a class="btn" href="#">Cabin »</a></p>
                                 </div>
-                                <div class="col-md-2 text-right">15</div>
-                                <div class="col-md-2 text-right">455.1</div>
+                                <div class="col-md-4 text-right">Total</div>
+                                <div id="W_OP_CABWeight" class="col-md-2 text-right">0</div>
+                                <div id="CG_OP_CABWeight" class="col-md-2 text-right">455.1</div>
                             </div>
+                        <div class="row" style="background-color:#f0f0f5">
+                            <div class="col-md-6 text-right">
+                                <p>Total - OPERATING ITEMS</p>
+                            </div>
+                            <div id="W_OWE_OPTotalOPWeight" class="col-md-2 text-right">0</div>
+                            <div id="CG_OWE_TotalOPWeight"class="col-md-2 text-right">0.00</div>
+                        </div>
 
                         </div>
 
@@ -237,12 +275,13 @@
 <!--OWE-->              
                 <div class="row" style="background-color:#B3B3B3">
                         <div class="col-md-6 ">OWE - OPERATING WEIGHT EMPTY </div>
-                        <div class="col-md-2 text-right">24401 </div>
-                        <div class="col-md-2 text-right">601.5 </div>
+                        <div id="W_ZFW_OWE"class="col-md-2 text-right">0 </div>
+                        <div id="CG_ZFW_OWE"class="col-md-2 text-right">0.00 </div>
                         <div class="col-md-2 text-right">39.9 </div>
                     </div>
               
 <!--Payload-->
+            <!--Payload - Passengers-->
                 <div class="row" style="background-color:#CCCCCC;"> 
                     <div class="col-md-12 collapse-group LS-LH-col">
                         <div class="row collapse">
@@ -255,10 +294,10 @@
                          <div class="row collapse ">
                             <div class="col-md-6 "> Passenger Row 1 R/H </div>
                             <div class="col-md-2 text-right">
-                                <input class="form-control input-sm text-right" value="195" id="Payload1" type="text">
+                                <input id="Pax_Weight1" value="195"  type="text">
                             </div>
                             <div class="col-md-2 text-right">
-                                <input class="form-control input-sm text-right" value="360.1" id="PayloadCG1" type="text"> 
+                                <input id="Pax_CG1" value="360.1"  type="text"> 
                             </div>
                             <div class="col-md-2 ">  </div>
                         </div>
@@ -266,10 +305,10 @@
                         <div class="row collapse ">
                             <div class="col-md-6 "> Passenger Row 1 L/H </div>
                             <div class="col-md-2 "> 
-                               <input class="form-control input-sm text-right" value="195" id="Payload2" type="text">
+                               <input id="Pax_Weight2" value="195"  type="text">
                             </div>
                             <div class="col-md-2 ">
-                                <input class="form-control input-sm text-right" value="360.1" id="PayloadCG2" type="text">
+                                <input id="Pax_CG2" value="360.1"  type="text">
                             </div>
                             <div class="col-md-2 ">  </div>
                         </div>             
@@ -277,33 +316,34 @@
                         <div class="row collapse ">
                             <div class="col-md-6 "> Passenger Row 4 L/H </div>
                             <div class="col-md-2 ">
-                                <input class="form-control input-sm text-right" value="195" id="Payload3" type="text">
+                                <input id="Pax_Weight3" value="195"  type="text">
                             </div>
                             <div class="col-md-2 ">
-                                <input class="form-control input-sm text-right" value="600" id="Payload3" type="text">
+                                <input id="Pax_CG3" value="600"  type="text">
                             </div>
                             <div class="col-md-2 ">  </div>
                         </div>            
                                     
                         <div class="row collapse ">
-                            <div class="col-md-6 "> Cargo Aft Compartment </div>
+                            <div class="col-md-6 "> Passenger Row 11 L/H  </div>
                             <div class="col-md-2 ">
-                                <input class="form-control input-sm text-right" value="600" id="Payload4" type="text">
+                                <input id="Pax_Weight4"value="195"  type="text">
                             </div>
                             <div class="col-md-2 ">
-                                <input class="form-control input-sm text-right" value="748.5" id="PayloadCG4" type="text">
+                                <input id="Pax_CG4"value="748.5"  type="text">
                             </div>
                             <div class="col-md-2 ">  </div>
                         </div>          
                                     
  
- <!--Total Payload-->
+ <!--Total passengers Payload-->
                        <div class="row">
-                            <div class="col-md-6 ">
-                                <p><a class="btn" href="#">Payload »</a>- TOTAL PAYLOAD WEIGHT</p>
+                            <div class="col-md-2">
+                                <p><a class="btn" href="#">Passengers »</a></p>
                             </div>
-                            <div class="col-md-2 text-right">1000</div>
-                            <div class="col-md-2 text-right">600.5</div>
+                           <div class="col-md-4 text-right">Total</div>
+                            <div  id="W_PL_PAX"class="col-md-2 text-right">0</div>
+                            <div id="CG_PL_PAX"class="col-md-2 text-right">0.0</div>
                             <div class="col-md-2 "></div>
                         </div>      
 
@@ -311,61 +351,169 @@
 
                 </div>
 
-<!--Fuel-->
-                <div class="row"> 
-                    <div class="col-md-6 collapse-group LS-LH-col">
-
-                        
-
-
-                        
-
+            <!--Payload - Cargo1-->
+            <div class="row" style="background-color:#CCCCCC;">
+                <div class="col-md-12 collapse-group LS-LH-col">
+                    <div class="row collapse">
+                        <div class="col-md-6 ">Description </div>
+                        <div class="col-md-2">Weight (lb) </div>
+                        <div class="col-md-2 ">CG (in) </div>
+                        <div class="col-md-2"></div>
                     </div>
 
-              </div>
+                    <div class="row collapse ">
+                        <div class="col-md-6 "> Wheel spare tire </div>
+                        <div class="col-md-2 text-right">
+                            <input id="Cargo1_Weight1" value="50" type="text">
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <input id="Cargo1_CG1" value="360.1" type="text">
+                        </div>
+                        <div class="col-md-2 ">  </div>
+                    </div>
+
+                    <div class="row collapse ">
+                        <div class="col-md-6 "> Toolbox</div>
+                        <div class="col-md-2 ">
+                            <input id="Cargo1_Weight2" value="60" type="text">
+                        </div>
+                        <div class="col-md-2 ">
+                            <input id="Cargo1_CG2" value="360.1" type="text">
+                        </div>
+                        <div class="col-md-2 ">  </div>
+                    </div>
+
+                    <div class="row collapse ">
+                        <div class="col-md-6 "> Fedex Mail </div>
+                        <div class="col-md-2 ">
+                            <input id="Cargo1_Weight3" value="200" type="text">
+                        </div>
+                        <div class="col-md-2 ">
+                            <input id="Cargo1_CG3" value="600" type="text">
+                        </div>
+                        <div class="col-md-2 ">  </div>
+                    </div>
+                    <!--Total Cargo1 Payload-->
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p><a class="btn" href="#">Cargo Aft »</a></p>
+                        </div>
+                        <div class="col-md-4 text-right">Total</div>
+                        <div id="W_PL_Cargo1" class="col-md-2 text-right">0</div>
+                        <div id="CG_PL_Cargo1" class="col-md-2 text-right">0</div>
+                        <div class="col-md-2 "></div>
+                    </div>                   
+                </div>
+            </div>
+
+            <!--Total Payload-->
+            <div class="row" style="background-color:#f0f0f5">
+                <div class="col-md-6 text-right">
+                    <p>TOTAL - PAYLOAD</p>
+                </div>
+                <div id="W_ZFW_PLTotalWeight" class="col-md-2 text-right">0</div>
+                <div id="CG_ZFW_PLTotalWeight" class="col-md-2 text-right">0.00</div>
+            </div>
+<!--Fuel-->
+  
 
 <!--ZFW-->      
-                <div class="row" style="background-color:#B3B3B3">
-                    <div class="col-md-6 ">ZFW - ZERO FUEL WEIGHT 28200 lb Max </div>
-                    <div class="col-md-2 text-right"> 24596</div>
-                    <div class="col-md-2 text-right" id="ZFWCG">600.1 </div>
-                    <div class="col-md-2 text-right" id="ZFWCG">38.7 </div>
+            <div class="row" style="background-color:#B3B3B3">
+                <div class="col-md-6 ">ZFW - ZERO FUEL WEIGHT 28200 lb Max </div>
+                <div id="W_RW_ZFWTotalWeight"class="col-md-2 text-right">0</div>
+                <div id="CG_RW_ZFWTotalWeight"class="col-md-2 text-right">600.1 </div>
+                <div class="col-md-2 text-right" id="ZFWCG">38.7 </div>
+            </div>
+<!--Fuel-->
+            <div class="row" style="background-color:#CCCCCC">
+                <div class="col-md-12 collapse-group LS-LH-col">
+                    <div class="row collapse">
+                        <div class="col-md-6 ">Main Tank</div>
+                        <div class="col-md-2 ">
+                            <input id="Fuel_Weight1" value="24596" type="text">
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <input id="Fuel_CG1" value="600.1" type="text">
+                        </div>
+                        <div class="col-md-2 text-right"> </div>
+                    </div>
+                    <div class="row collapse" style="background-color:#CCCCCC">
+                        <div class="col-md-6 ">Center Tank</div>
+                        <div class="col-md-2 ">
+                            <input  id="Fuel_Weight2" value="4445" type="text">
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <input id="Fuel_CG2" value="500.5" type="text">
+                        </div>
+                        <div class="col-md-2 text-right"> </div>
+                    </div>
+                    <!--Total Fuel-->
+                    <div class="row">
+                        <div class="col-md-2 ">
+                            <p><a class="btn" href="#">Fuel »</a></p>
+                        </div>
+                        <div class="col-md-4 text-right">Total</div>
+                        <div id="W_RW_Fuel" class="col-md-2 text-right">0</div>
+                        <div id="W_RWCG_Fuel" class="col-md-2 text-right">0</div>
+                        <div class="col-md-2 "></div>
+                    </div>
+                </div>
+            </div>
+
+                    <!--RW-->
+                    <div class="row" style="background-color:#B3B3B3">
+                        <div class="col-md-6 ">RW - RAMP WEIGHT xxxxx lb Max </div>
+                        <div id="W_RWTotalWeight" class="col-md-2 text-right">0 </div>
+                        <div id="RWCG" class="col-md-2 text-right">0 </div>
+                        <div id="RWMAC" class="col-md-2 text-right ">0 </div>
+                    </div>
+                    <!--Taxi Fuel-->
+                    <div class="row" style="background-color:#CCCCCC">
+                        <div class="col-md-6 ">Taxi Fuel</div>
+                        <div class="col-md-2 ">
+                            <input id="TXFuel_Weight2" value="4445" type="text">
+                        </div>
+                        <div class="col-md-2 text-right">400</div>
+                        <div class="col-md-2 text-right"> </div>
+                    </div>
+
+                    <!--TOW-->
+                    <div class="row" style="background-color:#B3B3B3">
+                        <div class="col-md-6 ">TOW - TAKE OFF WEIGHT xxxxx lb Max </div>
+                        <div id="TOW" class="col-md-2 text-right">28000 </div>
+                        <div id="TOWCG" class="col-md-2 text-right">600.1 </div>
+                        <div id="TOWMAC" class="col-md-2  text-right">38.7 </div>
+                    </div>
+                    <!--Trip Fuel-->
+                    <div class="row" style="background-color:#CCCCCC">
+                        <div class="col-md-6 ">Trip Fuel</div>
+                        <div class="col-md-2 ">
+                            <input value="4445" id="TRPFuel_Weight2" type="text">
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <input id="TRPFuel_CG2" value="500.5" type="text">
+                        </div>
+                        <div class="col-md-2 text-right"> </div>
+                    </div>
+
+                    <!--LW-->
+                    <div class="row" style="background-color:#B3B3B3">
+                        <div class="col-md-6 ">LW - Landing WEIGHT xxxxx lb Max </div>
+                        <div id="LW" class="col-md-2 text-right">28000 </div>
+                        <div id="LWCG" class="col-md-2 text-right">600.1 </div>
+                        <div id="LWMAC" class="col-md-2 text-right">38.7 </div>
+                    </div>
+
+
                 </div>
 
-                <div class="row" style="background-color:#B3B3B3">
-                    <div class="col-md-6 ">Main Tank</div>
-                    <div class="col-md-2 ">
-                        <input class="form-control input-sm text-right" value="24596" id="Fuel1" type="text">
-                    </div>
-                    <div class="col-md-2 text-right" id="FuelCG1">600.1 </div>
-                    <div class="col-md-2 text-right"> </div>
+                <!--Loadsheet Chart-->
+                <div class="panel col-md-6" style="width:400px;height:400px;margin:2px; background-color:#E6E6E6; ">
+                    <div id="LoadsheetChart" style="width:100%; height:100%; "></div>
+                    <p class="message"></p>
                 </div>
-            <div class="row" style="background-color:#B3B3B3">
-                <div class="col-md-6 ">Center Tank</div>
-                <div class="col-md-2 ">
-                    <input class="form-control input-sm text-right" value="24596" id="Fuel2" type="text">
-                </div>
-                <div class="col-md-2 text-right" id="FuelCG2">600.1 </div>
-                <div class="col-md-2 text-right"> </div>
+
             </div>
-<!--TOW-->
-                <div class="row" style="background-color:#B3B3B3">
-                    <div class="col-md-6 ">TOW - TAKE OFF WEIGHT xxxxx lb Max </div>
-                    <div id="TOW" class="col-md-2 text-right">28000 </div>
-                    <div id="TOWCG" class="col-md-2 text-right">600.1 </div>
-                    <div id="TOWMAC" class="col-md-2 ">38.7 </div>
-                </div>
-                
-              
-        </div>
-        
-<!--Loadsheet Chart-->
-        <div class="panel col-md-6"  style="width:400px;height:400px;margin:2px; background-color:#E6E6E6; ">  
-            <div id="LoadsheetChart" style="width:100%; height:100%; "></div>
-            <p class="message"></p>
-         </div>
-            
-        </div>
 
     <!-- Modal select an airframe Json file -->
     
@@ -394,9 +542,7 @@
 
         
     <script>
-        $(document).ready(function () {
-            $("[id^=OP_CG]").addClass("form-control input-sm text-right");
-        });
+       
 
 
 

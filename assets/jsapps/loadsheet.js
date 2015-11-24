@@ -6,12 +6,86 @@
        //    var $collapse = $this.closest('.collapse-group').find('.collapse');
        //    $collapse.collapse('toggle');
        //});
-          
+    $(document).ready(function () {
+        $("[id*='_CG']").addClass("form-control input-sm text-right");
+        $("[id*='_Weight']").addClass("form-control input-sm text-right");
+
+        // Do sub total of Operating items weight
+        
+        CalcItemsWeight("[id*='Crews_Weight']", "[id='W_OP_CrewsItems']");
+        CalcItemsWeight("[id*='G1_Weight']", "[id='W_OP_G1Weight']");
+        CalcItemsWeight("[id*='CAB1_Weight']", "[id='W_OP_CABWeight']");
+
+        // Do operating weight items total
+        CalcSubTotalWeight("[id*='W_OP_']", "[id='W_OWE_OPTotalOPWeight']");
+
+        // Do OWE (Operating Weight Empty) calcs
+        CalcSubTotalWeight("[id*='W_OWE_']", "[id='W_ZFW_OWE']");
+
+        // Do sub total payload
+        CalcItemsWeight("[id*='Pax_Weight']", "[id='W_PL_PAX']");
+        CalcItemsWeight("[id*='Cargo1_Weight']", "[id='W_PL_Cargo1']");
+
+        // Do Payload Weight total
+        CalcSubTotalWeight("[id*='W_PL_']", "[id='W_ZFW_PLTotalWeight']");
+
+        // Do ZFW (Zero Fuel_Weight) calc
+        CalcSubTotalWeight("[id*='W_ZFW_']", "[id='W_RW_ZFWTotalWeight']");
+
+        // Do total Fuel Weight
+        CalcItemsWeight("[id*='Fuel_Weight']", "[id='W_RW_Fuel']");
+
+        // Do RW (Ramp Weight) calc
+        CalcSubTotalWeight("[id*='W_RW_']", "[id='W_RWTotalWeight']");
+
+        //calc
+       SubStractWeight("#W_RWTotalWeight", "#TXFuel_Weight2");
+
+     // alert( $("#W_RWTotalWeight").text());
+      
+
+
+    });
+
+    function SubStractWeight(weight1, weight2) {
+        var tempweight1 = 0.0;
+        var tempweight2 = 0.0;
+        var tempweight3 = 0.0;
+        alert($(weight1).text());
+        alert($(weight2).val());
+        //tempweight = $(weight1).text().parseFloat - $(weight2).val().parseFloat ;
+        tempweight1 = $(weight1).text().parseFloat;
+        tempweight2 = $(weight2).val().parseFloat;
+        tempweight3 = tempweight1 - tempweight2;
+        alert(tempweight1.toString());
+        alert(tempweight2.toString());
+        alert(tempweight3.toString());
+
+   }
   
+    function CalcItemsWeight(Items, Total) {
+        var SubTotalWeight = 0.0;
+        $(Items).each(function () {
+            SubTotalWeight += parseFloat(this.value);
+        });
+        
+        $(Total).text(SubTotalWeight.toString());
+
+    }
+
+    function CalcSubTotalWeight(subItems, subTotal) {
+        var SubTotalWeight = 0.0;
+        $(subItems).each(function () {
+            SubTotalWeight += parseFloat($(this).text());
+        });
+
+        $(subTotal).text(SubTotalWeight.toString());
+
+    }
+
 
     $(function () {
-        
-        //frame = [[10, 22000], [10, 140000], [45, 140000], [45, 22000], [10, 22000]];
+               //frame = [[10, 22000], [10, 140000], [45, 140000], [45, 22000], [10, 22000]];
         var envelope = [[20, 71700], [20, 98000], [28, 129700], [38, 129700], [38, 119840], [43, 102200], [43, 94000], [34, 71700], [20, 71700]];
          
 
