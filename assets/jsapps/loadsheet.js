@@ -38,8 +38,11 @@
         // Do RW (Ramp Weight) calc
         CalcSubTotalWeight("[id*='W_RW_']", "[id='W_RWTotalWeight']");
 
-        //calc
-       SubStractWeight("#W_RWTotalWeight", "#TXFuel_Weight2");
+        //calc TOW  Take Off Weight
+        SubStractWeight("#W_RWTotalWeight", "#TXFuel_Weight", "#TOW");
+
+        //calc LW  Landing Weight
+        SubStractWeight("#TOW", "#TRPFuel_Weight", "#LW");
 
      // alert( $("#W_RWTotalWeight").text());
       
@@ -47,20 +50,11 @@
 
     });
 
-    function SubStractWeight(weight1, weight2) {
-        var tempweight1 = 0.0;
-        var tempweight2 = 0.0;
-        var tempweight3 = 0.0;
-        alert($(weight1).text());
-        alert($(weight2).val());
-        //tempweight = $(weight1).text().parseFloat - $(weight2).val().parseFloat ;
-        tempweight1 = $(weight1).text().parseFloat;
-        tempweight2 = $(weight2).val().parseFloat;
-        tempweight3 = tempweight1 - tempweight2;
-        alert(tempweight1.toString());
-        alert(tempweight2.toString());
-        alert(tempweight3.toString());
-
+    function SubStractWeight(weight1, weight2, RemainingWeight) {
+        var tempweight = 0.0;
+       
+        tempweight = parseFloat($(weight1).text()) - parseFloat($(weight2).val());
+        $(RemainingWeight).text(tempweight.toString());       
    }
   
     function CalcItemsWeight(Items, Total) {
@@ -68,7 +62,7 @@
         $(Items).each(function () {
             SubTotalWeight += parseFloat(this.value);
         });
-        
+    ('')    
         $(Total).text(SubTotalWeight.toString());
 
     }
