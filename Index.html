@@ -74,14 +74,13 @@
 
                 </div>
 
-               
                 <!--TEW-->
 
                 <div class="row well-sm" style="background-color:#B3B3B3">
                     <div class="col-md-6 ">TEW - True Empty Weight </div>
-                    <div id="W_OWE_OP_TEW" class="col-md-2 text-right ">30000</div>
-                    <div id="CG_OWE_OP_TEW" class="col-md-2 text-right ">678.3</div>
-                    <div class="col-md-2  text-right">xx.x </div>
+                    <div id="W_OWE_TEW" class="col-md-2 text-right ">30000</div>
+                    <div id="CG_OWE_TEW" class="col-md-2 text-right ">678.3</div>
+                    <div class="col-md-2  text-right">0.00</div>
                 </div>
 
                 <!--Operating Items-->
@@ -104,7 +103,6 @@
                                 <input id="Crews_Weight1" value="390" type="text">
                             </div>
                             <div class="col-md-2 ">
-
                                 <input id="Crews_CG1" value="280" type="text">
                             </div>
                             <div class="col-md-2 ">  </div>
@@ -149,8 +147,8 @@
                             </div>
                             <div class="col-md-3 "></div>
                             <div class="col-md-1 text-right Sub-Total">Total</div>
-                            <div id="W_OP_CrewsItems" class="col-md-2 text-right Sub-Total "></div>
-                            <div id="CG_OP_CrewsItems" class="col-md-2 text-right Sub-Total"></div>
+                            <div id="W_OP_CrewsItems" class="col-md-2 text-right Sub-Total ">0</div>
+                            <div id="CG_OP_CrewsItems" class="col-md-2 text-right Sub-Total">0</div>
                             <div class="col-md-2 "></div>
                         </div>
 
@@ -195,15 +193,13 @@
                         </div>
                         <div class="row">
 
-
-
                             <div class="col-md-2 ">
                                 <p><a class="btn" href="#">Galley »</a></p>
                             </div>
                             <div class="col-md-3 "></div>
                             <div class="col-md-1 text-right Sub-Total">Total</div>
                             <div id="W_OP_G1Items" class="col-md-2 text-right Sub-Total">0</div>
-                            <div id="CG_OP_G1Items" class="col-md-2 text-right Sub-Total">325</div>
+                            <div id="CG_OP_G1Items" class="col-md-2 text-right Sub-Total">0</div>
 
                         </div>
 
@@ -260,8 +256,6 @@
                             </div>
                         </div>
 
-
-
                         <div class="row">
                             <div class="col-md-2">
                                 <p><a class="btn" href="#">Cabin »</a></p>
@@ -269,14 +263,14 @@
                             <div class="col-md-3 "></div>
                             <div class="col-md-1 text-right Sub-Total">Total</div>
                             <div id="W_OP_CAB1Items" class="col-md-2 text-right Sub-Total">0</div>
-                            <div id="CG_OP_CAB1Items" class="col-md-2 text-right Sub-Total">455.1</div>
+                            <div id="CG_OP_CAB1Items" class="col-md-2 text-right Sub-Total">0</div>
                         </div>
                         <div class="row" style="background-color:#f0f0f5">
                             <div class="col-md-6 text-right">
                                 <p>Total - OPERATING ITEMS</p>
                             </div>
-                            <div id="W_OWE_OPTotalOPWeight" class="col-md-2 text-right">0</div>
-                            <div id="CG_OWE_TotalOPWeight" class="col-md-2 text-right">0.00</div>
+                            <div id="W_OWE_OPTotal" class="col-md-2 text-right">0</div>
+                            <div id="CG_OWE_OPTotal" class="col-md-2 text-right">0</div>
                         </div>
 
                     </div>
@@ -285,10 +279,10 @@
 
                 <!--OWE-->
                 <div class="row well-sm" style="background-color:#B3B3B3">
-                    <div class="col-md-6 ">OWE - OPERATING WEIGHT EMPTY </div>
-                    <div id="W_ZFW_OWE" class="col-md-2 text-right">0 </div>
-                    <div id="CG_ZFW_OWE" class="col-md-2 text-right">0.00 </div>
-                    <div class="col-md-2 text-right">39.9 </div>
+                    <div class="col-md-6 ">OWE - OPERATING WEIGHT EMPTY</div>
+                    <div id="W_ZFW_OWE" class="col-md-2 text-right">0</div>
+                    <div id="CG_ZFW_OWE" class="col-md-2 text-right">0.00</div>
+                    <div class="col-md-2 text-right">0.00</div>
                 </div>
 
                 <!--Payload-->
@@ -424,16 +418,16 @@
                     <div class="col-md-6 text-right">
                         <p>TOTAL - PAYLOAD</p>
                     </div>
-                    <div id="W_ZFW_PLTotalWeight" class="col-md-2 text-right">0</div>
-                    <div id="CG_ZFW_PLTotalWeight" class="col-md-2 text-right">0.00</div>
+                    <div id="W_ZFW_PLTotal" class="col-md-2 text-right">0</div>
+                    <div id="CG_ZFW_PLTotal" class="col-md-2 text-right">0</div>
                 </div>
                 <!--Fuel-->
                 <!--ZFW-->
                 <div class="row well-sm" style="background-color:#B3B3B3">
-                    <div class="col-md-6 ">ZFW - ZERO FUEL WEIGHT 28200 lb Max </div>
-                    <div id="W_RW_ZFWTotalWeight" class="col-md-2 text-right">0</div>
-                    <div id="CG_RW_ZFWTotalWeight" class="col-md-2 text-right">600.1 </div>
-                    <div class="col-md-2 text-right" id="ZFWCG">38.7 </div>
+                    <div class="col-md-6 ">ZFW - ZERO FUEL WEIGHT 28200 lb Max</div>
+                    <div id="W_RW_ZFWTotal" class="col-md-2 text-right">0</div>
+                    <div id="CG_RW_ZFWTotal" class="col-md-2 text-right">0</div>
+                    <div class="col-md-2 text-right" id="ZFWCG">0.00 </div>
                 </div>
                 <!--Fuel-->
                 <div class="row" style="background-color:#CCCCCC">
@@ -465,8 +459,8 @@
                             </div>
                             <div class="col-md-3 "></div>
                             <div class="col-md-1 text-right Sub-Total">Total</div>
-                            <div id="W_RW_Total_FuelWeight" class="col-md-2 text-right Sub-Total">0</div>
-                            <div id="Total_FuelCG" class="col-md-2 text-right Sub-Total">0</div>
+                            <div id="W_RW_FuelItems" class="col-md-2 text-right Sub-Total">0</div>
+                            <div id="CG_RW_FuelItems" class="col-md-2 text-right Sub-Total">0</div>
                             <div class="col-md-2 "></div>
                         </div>
                     </div>
@@ -474,10 +468,10 @@
 
                 <!--RW-->
                 <div class="row well-sm" style="background-color:#B3B3B3">
-                    <div class="col-md-6 ">RW - RAMP WEIGHT xxxxx lb Max </div>
-                    <div id="RWWeight" class="col-md-2 text-right">0 </div>
-                    <div id="RWCG" class="col-md-2 text-right">0 </div>
-                    <div id="RWMAC" class="col-md-2 text-right ">0 </div>
+                    <div class="col-md-6 ">RW - RAMP WEIGHT xxxxx lb Max</div>
+                    <div id="W_TOW_RWTotal" class="col-md-2 text-right">0</div>
+                    <div id="CG_TOW_RWTotal" class="col-md-2 text-right">0</div>
+                    <div id="RWMAC" class="col-md-2 text-right ">0.00</div>
                 </div>
                 <!--Taxi Fuel-->
                 <div class="row" style="background-color:#CCCCCC">
@@ -485,16 +479,16 @@
                     <div class="col-md-2 ">
                         <input id="TXFuelWeight" value="4445" type="text">
                     </div>
-                    <div class="col-md-2 text-right">400</div>
-                    <div class="col-md-2 text-right"> </div>
+                    <div id="TXFuelCG"  class="col-md-2 text-right">300.5</div>
+                    <div class="col-md-2 text-right"></div>
                 </div>
 
                 <!--TOW-->
                 <div class="row well-sm" style="background-color:#B3B3B3">
                     <div class="col-md-6 ">TOW - TAKE OFF WEIGHT xxxxx lb Max </div>
-                    <div id="TOWWeight" class="col-md-2 text-right">0 </div>
-                    <div id="TOWCG" class="col-md-2 text-right">600.1 </div>
-                    <div id="TOWMAC" class="col-md-2  text-right">38.7 </div>
+                    <div id="TOWWeight" class="col-md-2 text-right">0</div>
+                    <div id="TOWCG" class="col-md-2 text-right">0</div>
+                    <div id="TOWMAC" class="col-md-2  text-right">0.00</div>
                 </div>
                 <!--Trip Fuel-->
                 <div class="row" style="background-color:#CCCCCC">
@@ -502,18 +496,16 @@
                     <div class="col-md-2 ">
                         <input id="TRPFuelWeight" value="25000" type="text">
                     </div>
-                    <div class="col-md-2 text-right">
-                        <input id="TRPFuel_CG2" value="500.5" type="text">
-                    </div>
+                    <div  id="TRPFuelCG" class="col-md-2 text-right">500.5 </div>
                     <div class="col-md-2 text-right"> </div>
                 </div>
 
                 <!--LW-->
                 <div class="row well-sm" style="background-color:#B3B3B3">
                     <div class="col-md-6 ">LW - Landing WEIGHT xxxxx lb Max </div>
-                    <div id="LW" class="col-md-2 text-right">28000 </div>
-                    <div id="LWCG" class="col-md-2 text-right">600.1 </div>
-                    <div id="LWMAC" class="col-md-2 text-right">38.7 </div>
+                    <div id="LWWeight" class="col-md-2 text-right">0 </div>
+                    <div id="LWCG" class="col-md-2 text-right">0 </div>
+                    <div id="LWMAC" class="col-md-2 text-right">0.00 </div>
                 </div>
 
 
