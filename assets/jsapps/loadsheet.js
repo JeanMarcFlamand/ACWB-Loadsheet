@@ -6,8 +6,73 @@
 //    var $collapse = $this.closest('.collapse-group').find('.collapse');
 //    $collapse.collapse('toggle');
 //});
+// how to stick a div
+//http://www.pixelbind.com/examples/stick-a-div/
+// How to put all elements' content in array using jQuery ?
+// ref: http://stackoverflow.com/questions/4948770/how-to-put-all-elements-content-in-array-using-jquery
+//var items = [];
+
+//$('#main p').each(function (i, e) {
+//    items.push($(e).text());
+//});
+
+
+
+
+// Weight elements of loadsheet
+var MAC = 150;
+var LEMAC = 850;
+var USGperlb = 7.5;
+var ACFuelBurn = [[0, 762.3], [50, 762.1], [100, 761.8], [200, 761.2], [300, 760.5], [400, 760], [500, 759.4], [600, 758.9], [700, 758.4], [800, 758],
+    [900, 757.5], [1000,757.1 ], [1100,756.8 ], [1200,756.4 ], [1300, 756.1], [1400,755.8 ], [1500, 755.6], [1600, 755.3]];
+
+
+var OPItemsWeightSubTotals = [];
+var OPItemsCGArraySubtotals = [];
+var OWEWElements = [];
+var OWECGElements = [];
+var PLWWElementsSubTotals = [];
+var PLCGArraySubTotals = [];
+
+var ZFWWElements = [];
+var ZFWCGElements = [];
+var RWWElements = [];
+var RWCGElements = [];
+var TOWWElements = [];
+var TOWCGElements = [];
+var LWWElements = [];
+var LWCGElements = [];
+
+// a null signifies separate line segments
+
+var TEWPoint = {label:"TEW",points: { show: true },data:[[0, 0]]};
+var OWEPoint = {label:"OWE",points: { show: true },data:[[0, 0]]};
+var ZFWPoint = {label:"ZFW",points: { show: true },data:[[0, 0]]};
+var TOWPoint = {label:"TOW",points: { show: true },data:[[0, 0]]};
+var RWPoint = {label:"RW",points: { show: true },data:[[0, 0]]};
+var LWPoint = { label: "LW", points: { show: true },data: [[0, 0]] };
+
+
+
+var fuelcurve = [[38.6850, 24342], [33.0932, 26097], [32.6679, 26347],
+      [32.2577, 26597], [31.8630, 26847], [31.4838, 27097],
+      [31.1204, 27347], [30.7726, 27597], [30.4404, 27847],
+      [30.1235, 28097], [29.8218, 28347], [29.5349, 28597],
+      [29.2623, 28847], [29.0038, 29097], [28.7588, 29347],
+      [28.5268, 29597], [28.3073, 29847], [28.0998, 30097], [27.9037, 30347],
+      [27.7184, 30597], [27.5435, 30847], [27.3784, 31097], [27.2224, 31347],
+      [27.0752, 31597], [26.9361, 31847], [26.8048, 32097], [26.6808, 32347], [26.5636, 32597],
+      [26.4530, 32847], [26.3484, 33097], [26.2498, 33347], [26.1567, 33597], [26.0691, 33847],
+      [25.9868, 34097], [25.9097, 34347], [25.8378, 34597], [25.7711, 34847], [25.7097, 35097], [25.6538, 35347],
+      [25.6037, 35597], [25.5596, 35847], [25.5220, 36097], [25.4913, 36347], [25.4681, 36597], [25.4530, 36847],
+      [25.4466, 37097], [25.4499, 37347], [25.4636, 37597], [25.4887, 37847], [25.5263, 38097], [25.5775, 38347],
+      [25.6436, 38597], [25.7258, 38847], [25.8257, 39097], [25.9447, 39347], [26.0844, 39597], [26.2466, 39847], [26.4330, 40097]];
+
+var envelope = [[20, 71700], [20, 98000], [28, 129700], [38, 129700], [38, 119840], [43, 102200], [43, 94000], [34, 71700], [20, 71700]];
+
+
 $(document).ready(function () {
-//Format LoadSheet Elelements
+    //Format LoadSheet Elelements
     $("[id*='_CG']").addClass("form-control input-sm text-right");
     $("[id*='_Weight']").addClass("form-control input-sm text-right");
     $("[id*='TXFuelWeight']").addClass("form-control input-sm text-right");
@@ -18,7 +83,7 @@ $(document).ready(function () {
     StoreTEWandCG(OWEWElements, OWECGElements, "[id*='W_OWE_TEW']", "[id*='CG_OWE_TEW']");
     //alert("OWE Weight Array  =" + OWEWElements.join("\n"));
     //alert("OWE CG array =" + OWECGElements.join("\n"));
-    
+
     UpdateOWEandAfert();
 
     //assigner les events pour faire la mise a jour des calculs.
@@ -67,21 +132,8 @@ $(document).ready(function () {
     $("#TRPFuelWeight").change(function () {
         UpdateLW();
     });
-
-});
-// how to stick a div
-//http://www.pixelbind.com/examples/stick-a-div/
-// How to put all elements' content in array using jQuery ?
-// ref: http://stackoverflow.com/questions/4948770/how-to-put-all-elements-content-in-array-using-jquery
-//var items = [];
-
-//$('#main p').each(function (i, e) {
-//    items.push($(e).text());
-//});
-
-$(function () {
-    //frame = [[10, 22000], [10, 140000], [45, 140000], [45, 22000], [10, 22000]];
-
+    
+    
     var options = {
         series: {
             legend: { show: true },
@@ -89,68 +141,11 @@ $(function () {
         }
     };
 
-    $.plot($("#LoadsheetChart"), [envelope, fuelcurve,TEWPoint,OWEPoint,ZFWPoint,RWPoint,TOWPoint,LWPoint],options);
+   LSChart = $.plot($("#LoadsheetChart"), [envelope, fuelcurve, TEWPoint, OWEPoint, ZFWPoint, RWPoint, TOWPoint, LWPoint], options);
 
     var placeholder = $("#LoadsheetChart");
 
-    //var plot = $.plot(placeholder, [d1, d2, d3]);
-
-    // the plugin includes a jQuery plugin for adding resize events to
-    // any element, let's just add a callback so we can display the
-    // placeholder size
-    placeholder.resize(function () {
-        $(".message").text("The Chart is now "
-                     + $(this).width() + "x" + $(this).height()
-                     + " pixels");
-
-    });
 });
-
-
-// Weight elements of loadsheet
-
-var OPItemsWeightSubTotals = [];
-var OPItemsCGArraySubtotals = [];
-var OWEWElements = [];
-var OWECGElements = [];
-var PLWWElementsSubTotals = [];
-var PLCGArraySubTotals = [];
-
-var ZFWWElements = [];
-var ZFWCGElements = [];
-var RWWElements = [];
-var RWCGElements = [];
-var TOWWElements = [];
-var TOWCGElements = [];
-var LWWElements = [];
-var LWCGElements = [];
-
-// a null signifies separate line segments
-
-var TEWPoint = {label:"TEW",points: { show: true },data:[[45, 20000]]};
-var OWEPoint = {label:"OWE",data:[[0, 0]]};
-var ZFWPoint = {label:"ZFW",data:[[0, 0]]};
-var TOWPoint = {label:"TOW",data:[[0, 0]]};
-var RWPoint = {label:"RW",data:[[0, 0]]};
-var LWPoint = { label: "LW", data: [[0, 0]] };
-
-
-
-var fuelcurve = [[38.6850, 24342], [33.0932, 26097], [32.6679, 26347],
-      [32.2577, 26597], [31.8630, 26847], [31.4838, 27097],
-      [31.1204, 27347], [30.7726, 27597], [30.4404, 27847],
-      [30.1235, 28097], [29.8218, 28347], [29.5349, 28597],
-      [29.2623, 28847], [29.0038, 29097], [28.7588, 29347],
-      [28.5268, 29597], [28.3073, 29847], [28.0998, 30097], [27.9037, 30347],
-      [27.7184, 30597], [27.5435, 30847], [27.3784, 31097], [27.2224, 31347],
-      [27.0752, 31597], [26.9361, 31847], [26.8048, 32097], [26.6808, 32347], [26.5636, 32597],
-      [26.4530, 32847], [26.3484, 33097], [26.2498, 33347], [26.1567, 33597], [26.0691, 33847],
-      [25.9868, 34097], [25.9097, 34347], [25.8378, 34597], [25.7711, 34847], [25.7097, 35097], [25.6538, 35347],
-      [25.6037, 35597], [25.5596, 35847], [25.5220, 36097], [25.4913, 36347], [25.4681, 36597], [25.4530, 36847],
-      [25.4466, 37097], [25.4499, 37347], [25.4636, 37597], [25.4887, 37847], [25.5263, 38097], [25.5775, 38347],
-      [25.6436, 38597], [25.7258, 38847], [25.8257, 39097], [25.9447, 39347], [26.0844, 39597], [26.2466, 39847], [26.4330, 40097]];
-
-var envelope = [[20, 71700], [20, 98000], [28, 129700], [38, 129700], [38, 119840], [43, 102200], [43, 94000], [34, 71700], [20, 71700]];
 
 function UpdateOWEandAfert() {
     //alert("Do sub total of Operating items weight");
@@ -162,7 +157,7 @@ function UpdateOWEandAfert() {
 
     //alert("Check some element index first in W_ZFW_");
     //var mytest = GetLSElementIndex("[id*='W_ZFW_']", "W_ZFW_OWE");
-
+    
     CalcItemsWeightandCG("[id*='Crews_Weight']", "[id*='Crews_CG']", "[id='W_OP_CrewsItems']", "[id='CG_OP_CrewsItems']", "[id*='W_OP_']", "W_OP_CrewsItems", OPItemsWeightSubTotals, OPItemsCGArraySubtotals);
     CalcItemsWeightandCG("[id*='G1_Weight']", "[id*='G1_CG']", "[id='W_OP_G1Items']", "[id='CG_OP_G1Items']", "[id*='W_OP_']", "W_OP_G1Items", OPItemsWeightSubTotals, OPItemsCGArraySubtotals);
     CalcItemsWeightandCG("[id*='CAB1_Weight']", "[id*='CAB1_CG']", "[id='W_OP_CAB1Items']", "[id='CG_OP_CAB1Items']", "[id*='W_OP_']", "W_OP_CAB1Items", OPItemsWeightSubTotals, OPItemsCGArraySubtotals);
@@ -178,6 +173,9 @@ function UpdateOWEandAfert() {
     //alert("Next Do OWE (Operating Weight Empty) calcs");
     CalcSubTotalWeightandCG(OWEWElements, OWECGElements, ZFWWElements, ZFWCGElements, "[id*='W_ZFW_']", "W_ZFW_OWE", "[id='W_ZFW_OWE']", "[id*='CG_ZFW_OWE']");
     
+    //Display the point on the chart and put the MAC on the loadsheet
+    OWEPoint.data[0][1] = ZFWWElements[0];
+    OWEPoint.data[0][0] = GetMAC(ZFWCGElements[0], "[id='MAC_ZFW_OWE']");
 
     UpdateZFWandAfter();
 }
@@ -198,8 +196,9 @@ function StoreTEWandCG(myArrayWeight, myArrayCG, TEWWeightElement, TEWCGElement)
 
     });
 
-   // TEWPoint.data[1] = myArrayWeight[1];
-   // TEWPoint.data[0] = myArrayCG[1];
+    TEWPoint.data[0][1] = myArrayWeight[0];
+    TEWPoint.data[0][0] = GetMAC(myArrayCG[0], "[id='MAC_OWE_TEW']");
+
 
 }
 
@@ -219,6 +218,8 @@ function UpdateZFWandAfter() {
     //alert("Next Do ZFW (Zero Fuel_Weight) calc");
     CalcSubTotalWeightandCG(ZFWWElements, ZFWCGElements, RWWElements, RWCGElements, "[id*='W_RW_']", "W_RW_ZFWTotal", "[id='W_RW_ZFWTotal']", "[id='CG_RW_ZFWTotal']");
 
+    ZFWPoint.data[0][1] = RWWElements[0];
+    ZFWPoint.data[0][0] = GetMAC(RWCGElements[0], "[id='MAC_RW_ZFW']");
 
     UpdateRWandAfter();
 }
@@ -232,6 +233,9 @@ function UpdateRWandAfter() {
     //alert("Do RW (Ramp Weight) calc");
     CalcSubTotalWeightandCG(RWWElements, RWCGElements,TOWWElements,TOWCGElements, "[id*='W_TOW_']", "W_TOW_RWTotal", "[id='W_TOW_RWTotal']", "[id='CG_TOW_RWTotal']");
 
+    TOWPoint.data[0][1] = TOWWElements[0];
+    TOWPoint.data[0][0] = GetMAC(TOWCGElements[0], "[id='MAC_TOW_RWTotal']");
+
     UpdateTOWandAfter();
 }
 
@@ -239,12 +243,25 @@ function UpdateTOWandAfter() {
     //alert("calc TOW  Take Off Weight");
     SubStractWeight(TOWWElements, TOWCGElements, RWWElements, RWCGElements, "#TXFuelWeight", "#TXFuelCG", "#TOWWeight", "#TOWCG");
 
+    RWPoint.data[0][1] = RWWElements[0];
+    RWPoint.data[0][0] = GetMAC(RWCGElements[0], "[id='TOWMAC']");
+
     UpdateLW();
 }
 
 function UpdateLW() {
     //calc LW  Landing Weight
-    SubStractWeight(RWWElements,RWCGElements,LWWElements,LWCGElements,"#TRPFuelWeight","#TRPFuelCG","#LWWeight", "#LWCG");
+    SubStractWeight(RWWElements, RWCGElements, LWWElements, LWCGElements, "#TRPFuelWeight", "#TRPFuelCG", "#LWWeight", "#LWCG");
+    LWPoint.data[0][1] = LWWElements[0];
+    LWPoint.data[0][0] = GetMAC(LWCGElements[0], "[id='LWMAC']");
+    alert("Redraw the new Landing weight = " + LWWElements[0].toString());
+   
+    
+    //LSChart.setData([envelope, fuelcurve, TEWPoint, OWEPoint, ZFWPoint, RWPoint, TOWPoint, LWPoint]);
+    //LSChart.setupGrid(); //only necessary if your new data will change the axes or grid
+    //LSChart.draw();
+    
+
 }
 
 function SubStractWeight(weight1, cg1, weight2, cg2, weightElement, cgElement, RemainingWeight, NewCG) {
@@ -256,7 +273,7 @@ function SubStractWeight(weight1, cg1, weight2, cg2, weightElement, cgElement, R
     cg1[1] = parseFloat($(cgElement).text());
 
     tempweight = weight1[0] - weight1[1];
-    tempmoment = weight1[0]*cg1[0] + weight1[1]*cg1[1];
+    tempmoment = weight1[0]*cg1[0] - weight1[1]*cg1[1];
     CG = tempmoment/tempweight
     //alert("Weight to add = " + weight1.join(" , "));
     //alert("CG for each weight = " + cg1.join(" , "));
@@ -330,8 +347,11 @@ function CalcSubTotalWeightandCG(myWeightArray, myCGArray,ParentWeightArray,Pare
     $(subTotalCGElement).text(TotalCG.toFixed(2).toString());
     //get the index to store the value in an array
     var myindexgroup = GetLSElementIndex(ElementGroup, Element);
-    ParentWeightArray.splice(myindexgroup, 0, TotalWeight);
-    ParentCGArray.splice(myindexgroup, 0, TotalCG);
+    ParentWeightArray[myindexgroup] = TotalWeight;
+    ParentCGArray[myindexgroup]= TotalCG;
+
+    //ParentWeightArray.splice(myindexgroup, 0, TotalWeight);
+    //ParentCGArray.splice(myindexgroup, 0, TotalCG);
 
     //alert("CalcSubTotalWeightandCG weight array =" + ParentWeightArray.join("\n"));
     //alert("CalcSubTotalWeightandCG CG array =" + ParentCGArray.join("\n"));
@@ -390,3 +410,13 @@ function receivedText() {
 
     alert(envelope.lenght);
 }
+
+function GetMAC(ToConvert,MACElement) {
+    var mymac = 0;
+    mymac = (ToConvert - LEMAC) / MAC * 100;
+    //alert(MACElement + " = "+mymac.toFixed(2).toString());
+    $(MACElement).text(mymac.toFixed(2).toString());
+
+    return mymac;
+}
+
