@@ -1,9 +1,10 @@
 ACWB-Loadsheet
-Source code used for developping weight and balance functionnality on any Operating System
+Source code used for developing weight and balance functionality on any Operating System
 
-Thecnology used are
+Technology used are:
 Apache Cordova
 Javascript
 Bootstrap
-
+Jquery
+FlotJS
 
