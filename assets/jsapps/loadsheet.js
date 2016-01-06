@@ -43,7 +43,9 @@ var TOWCGElements = [];
 var LWWElements = [];
 var LWCGElements = [];
 
-// a null signifies separate line segments
+// Variables for the chart
+//a null signifies separate line segments
+var placeholder = $("#LoadsheetChart");
 
 var TEWPoint = {label:"TEW",points: { show: true },data:[[0, 0]]};
 var OWEPoint = {label:"OWE",points: { show: true },data:[[0, 0]]};
@@ -52,7 +54,12 @@ var TOWPoint = {label:"TOW",points: { show: true },data:[[0, 0]]};
 var RWPoint = {label:"RW",points: { show: true },data:[[0, 0]]};
 var LWPoint = { label: "LW", points: { show: true },data: [[0, 0]] };
 
-
+var options = {
+    series: {
+        legend: { show: true },
+        lines: { show: true },
+    }
+};
 
 var fuelcurve = [[38.6850, 24342], [33.0932, 26097], [32.6679, 26347],
       [32.2577, 26597], [31.8630, 26847], [31.4838, 27097],
@@ -133,17 +140,7 @@ $(document).ready(function () {
         UpdateLW();
     });
     
-    
-    var options = {
-        series: {
-            legend: { show: true },
-            lines: { show: true },
-        }
-    };
-
-   LSChart = $.plot($("#LoadsheetChart"), [envelope, fuelcurve, TEWPoint, OWEPoint, ZFWPoint, RWPoint, TOWPoint, LWPoint], options);
-
-    var placeholder = $("#LoadsheetChart");
+   
 
 });
 
@@ -254,8 +251,11 @@ function UpdateLW() {
     SubStractWeight(RWWElements, RWCGElements, LWWElements, LWCGElements, "#TRPFuelWeight", "#TRPFuelCG", "#LWWeight", "#LWCG");
     LWPoint.data[0][1] = LWWElements[0];
     LWPoint.data[0][0] = GetMAC(LWCGElements[0], "[id='LWMAC']");
-    alert("Redraw the new Landing weight = " + LWWElements[0].toString());
-   
+   // alert("Redraw the new Landing weight = " + LWWElements[0].toString());
+    LSChart = $.plot($("#LoadsheetChart"), [envelope, fuelcurve, TEWPoint, OWEPoint, ZFWPoint, RWPoint, TOWPoint, LWPoint], options);
+
+
+
     
     //LSChart.setData([envelope, fuelcurve, TEWPoint, OWEPoint, ZFWPoint, RWPoint, TOWPoint, LWPoint]);
     //LSChart.setupGrid(); //only necessary if your new data will change the axes or grid
