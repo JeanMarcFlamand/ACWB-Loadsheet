@@ -39,7 +39,7 @@
 
 
 </head>
-<body data-spy="scroll"data-target=".nav-pills" data-offset="60">
+<body data-spy="scroll" data-target=".nav-pills" data-offset="60">
 
     <div class="container" style="padding: 5px;">
 
@@ -61,14 +61,15 @@
                 <li><a href="#">Menu 3</a></li>
             </ul>
 
-            
+
         </nav>
-        
-        
-        <div class="row-fluid" style="overflow-y: hidden">
-            <div class=" col-xs-6" style="overflow-y: hidden; padding: 5px; background-color: steelblue">
+
+
+        <div class="row" style="overflow: hidden;">
+            <!--Loadsheet calcs  section-->
+            <div class=" col-xs-6" style="overflow: hidden; padding: 5px; background-color: steelblue">
                 <div class="panel" style="overflow: hidden; margin-top: 40px;">
-                    <!--Loadsheet calcs-->
+
                     <div id="LoadsheetCalcs" class="collapse-group" style="background-color: #E6E6E6;">
                         <!--Loadsheet Header-->
                         <div class="row">
@@ -518,40 +519,61 @@
                 </div>
             </div>
 
-            <div class="col-xs-6" style="overflow-y: hidden; padding: 5px; background-color: steelblue">
-                <div class="panel" data-spy="affix"  data-offset-top="60" style="padding-left:20px; margin-top: 60px; background-color: steelblue;" >
+            <!--Loadsheet Chart Section-->
+            <div class="col-xs-6" style="overflow: hidden; padding: 5px; background-color: steelblue">
+                <div class="panel" data-spy="affix" data-offset-top="60" style="padding-left: 20px; margin-top: 60px; background-color: steelblue;">
+                    <div id="LoadsheetChart" style="height: 500px; width: 525px; background-color: #E6E6E6;">
+                    </div>
+                    <div class="panel panel-default" style="margin-top:5px; background-color: #E6E6E6;">
+                        <p>Not Working yet-Sorry.</p>
+                        
+                        <p>Flot support user interactions. Try pointing and clicking on the points.</p>
 
-                    <!--Loadsheet Chart-->
-                    <div id="LoadsheetChart" style="height: 500px;width:525px;    background-color: #E6E6E6;">
+                        <p>
+                            <label>
+                                <input id="enablePosition" type="checkbox" checked="checked">Show mouse position</label>
+                            <span id="hoverdata"></span>
+                            <span id="clickdata"></span>
+                        </p>
+
+                        <p>A tooltip is easy to build with a bit of jQuery code and the data returned from the plot.</p>
+
+                        <p>
+                            <label>
+                                <input id="enableTooltip" type="checkbox" checked="checked">Enable tooltip</label>
+                        </p>
+                        <div id="footer">
+                            Copyright &copy; 2007 - 2014 IOLA and Ole Laursen
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
- 
 
-    <!-- Modal select an airframe Json file -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog modal-xs">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Select an Airframe JSON file:</h4>
-                </div>
-                <div class="modal-body">
-                    <label for="files">Select a file: </label>
-                    <input type="file" accept=".json" id="fileinput" />
-                    <output id="result"></output>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id='btnLoad' class="btn btn-default" data-dismiss="modal" onclick='handleFileSelect();'>Load</button>
+
+        <!-- Modal select an airframe Json file -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-xs">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Select an Airframe JSON file:</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label for="files">Select a file: </label>
+                        <input type="file" accept=".json" id="fileinput" />
+                        <output id="result"></output>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id='btnLoad' class="btn btn-default" data-dismiss="modal" onclick='handleFileSelect();'>Load</button>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
-
-
 
     <script>
 

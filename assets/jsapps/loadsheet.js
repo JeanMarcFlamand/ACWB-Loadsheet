@@ -79,6 +79,44 @@ var envelope = [[20, 71700], [20, 98000], [28, 129700], [38, 129700], [38, 11984
 
 
 $(document).ready(function () {
+    //flot chart function
+    $("<div id='tooltip'></div>").css({
+        position: "absolute",
+        display: "none",
+        border: "1px solid #fdd",
+        padding: "2px",
+        "background-color": "#fee",
+        opacity: 0.80
+    }).appendTo("body");
+
+    $("#LoadsheetChart").bind("plothover", function (event, pos, item) {
+
+        if ($("#enablePosition:checked").length > 0) {
+            var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
+            $("#hoverdata").text(str);
+        }
+
+        if ($("#enableTooltip:checked").length > 0) {
+            if (item) {
+                var x = item.datapoint[0].toFixed(2),
+                    y = item.datapoint[1].toFixed(2);
+
+                $("#tooltip").html(item.series.label + " of " + x + " = " + y)
+                    .css({ top: item.pageY + 5, left: item.pageX + 5 })
+                    .fadeIn(200);
+            } else {
+                $("#tooltip").hide();
+            }
+        }
+    });
+
+    $("#LoadsheetChart").bind("plotclick", function (event, pos, item) {
+        if (item) {
+            $("#clickdata").text(" - click point " + item.dataIndex + " in " + item.series.label);
+            plot.highlight(item.series, item.datapoint);
+        }
+    });
+
     //Format LoadSheet Elelements
     $("[id*='_CG']").addClass("form-control input-sm text-right");
     $("[id*='_Weight']").addClass("form-control input-sm text-right");
@@ -254,6 +292,20 @@ function UpdateLW() {
    // alert("Redraw the new Landing weight = " + LWWElements[0].toString());
     LSChart = $.plot($("#LoadsheetChart"), [envelope, fuelcurve, TEWPoint, OWEPoint, ZFWPoint, RWPoint, TOWPoint, LWPoint], options);
 
+    // Add the Flot version string to the footer
+
+    $("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
+
+    $("<div id='tooltip'></div>").css({
+        position: "absolute",
+        display: "none",
+        border: "1px solid #fdd",
+        padding: "2px",
+        "background-color": "#fee",
+        opacity: 0.80
+    }).appendTo("body");
+
+   
 
 
     
