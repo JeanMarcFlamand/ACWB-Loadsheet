@@ -1,11 +1,6 @@
 // JavaScript source code
 
-//$('.row .btn').on('click', function (e) {
-//    e.preventDefault();
-//    var $this = $(this);
-//    var $collapse = $this.closest('.collapse-group').find('.collapse');
-//    $collapse.collapse('toggle');
-//});
+
 // how to stick a div
 //http://www.pixelbind.com/examples/stick-a-div/
 // How to put all elements' content in array using jQuery ?
@@ -24,7 +19,7 @@ var MAC = 150;
 var LEMAC = 850;
 var USGperlb = 7.5;
 var ACFuelBurn = [[0, 762.3], [50, 762.1], [100, 761.8], [200, 761.2], [300, 760.5], [400, 760], [500, 759.4], [600, 758.9], [700, 758.4], [800, 758],
-    [900, 757.5], [1000,757.1 ], [1100,756.8 ], [1200,756.4 ], [1300, 756.1], [1400,755.8 ], [1500, 755.6], [1600, 755.3]];
+    [900, 757.5], [1000, 757.1], [1100, 756.8], [1200, 756.4], [1300, 756.1], [1400, 755.8], [1500, 755.6], [1600, 755.3]];
 
 
 var OPItemsWeightSubTotals = [];
@@ -47,12 +42,12 @@ var LWCGElements = [];
 //a null signifies separate line segments
 var placeholder = $("#LoadsheetChart");
 
-var TEWPoint = {label:"TEW",points: { show: true },data:[[0, 0]]};
-var OWEPoint = {label:"OWE",points: { show: true },data:[[0, 0]]};
-var ZFWPoint = {label:"ZFW",points: { show: true },data:[[0, 0]]};
-var TOWPoint = {label:"TOW",points: { show: true },data:[[0, 0]]};
-var RWPoint = {label:"RW",points: { show: true },data:[[0, 0]]};
-var LWPoint = { label: "LW", points: { show: true },data: [[0, 0]] };
+var TEWPoint = { label: "TEW", points: { show: true }, data: [[0, 0]] };
+var OWEPoint = { label: "OWE", points: { show: true }, data: [[0, 0]] };
+var ZFWPoint = { label: "ZFW", points: { show: true }, data: [[0, 0]] };
+var TOWPoint = { label: "TOW", points: { show: true }, data: [[0, 0]] };
+var RWPoint = { label: "RW", points: { show: true }, data: [[0, 0]] };
+var LWPoint = { label: "LW", points: { show: true }, data: [[0, 0]] };
 
 var options = {
     series: {
@@ -79,6 +74,9 @@ var envelope = [[20, 71700], [20, 98000], [28, 129700], [38, 129700], [38, 11984
 
 
 $(document).ready(function () {
+
+   
+
     //flot chart function
     $("<div id='tooltip'></div>").css({
         position: "absolute",
@@ -92,14 +90,14 @@ $(document).ready(function () {
     $("#LoadsheetChart").bind("plothover", function (event, pos, item) {
 
         if ($("#enablePosition:checked").length > 0) {
-            var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
+            var str = "(" + pos.x.toFixed(1) + ", " + pos.y.toFixed(1) + ")";
             $("#hoverdata").text(str);
         }
 
         if ($("#enableTooltip:checked").length > 0) {
             if (item) {
-                var x = item.datapoint[0].toFixed(2),
-                    y = item.datapoint[1].toFixed(2);
+                var x = item.datapoint[0].toFixed(1),
+                    y = item.datapoint[1].toFixed(1);
 
                 $("#tooltip").html(item.series.label + " of " + x + " = " + y)
                     .css({ top: item.pageY + 5, left: item.pageX + 5 })
@@ -177,10 +175,27 @@ $(document).ready(function () {
     $("#TRPFuelWeight").change(function () {
         UpdateLW();
     });
-    
-   
+
+    ExpdCollsp(); //expand or collapse subTotals
+
+    // Resize Chart on windows change.
+     $.plot($("#LoadsheetChart"), [envelope, fuelcurve, TEWPoint, OWEPoint, ZFWPoint, RWPoint, TOWPoint, LWPoint], options);
+
+    window.onresize = function (event) {
+        $.plot($("#LoadsheetChart"), [envelope, fuelcurve, TEWPoint, OWEPoint, ZFWPoint, RWPoint, TOWPoint, LWPoint], options);
+    }
+  
 
 });
+
+function ExpdCollsp() {
+    $('.row .btn').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $collapse = $this.closest('.collapse-group').find('.collapse');
+        $collapse.collapse('toggle');
+    });
+}
 
 function UpdateOWEandAfert() {
     //alert("Do sub total of Operating items weight");
@@ -192,7 +207,7 @@ function UpdateOWEandAfert() {
 
     //alert("Check some element index first in W_ZFW_");
     //var mytest = GetLSElementIndex("[id*='W_ZFW_']", "W_ZFW_OWE");
-    
+
     CalcItemsWeightandCG("[id*='Crews_Weight']", "[id*='Crews_CG']", "[id='W_OP_CrewsItems']", "[id='CG_OP_CrewsItems']", "[id*='W_OP_']", "W_OP_CrewsItems", OPItemsWeightSubTotals, OPItemsCGArraySubtotals);
     CalcItemsWeightandCG("[id*='G1_Weight']", "[id*='G1_CG']", "[id='W_OP_G1Items']", "[id='CG_OP_G1Items']", "[id*='W_OP_']", "W_OP_G1Items", OPItemsWeightSubTotals, OPItemsCGArraySubtotals);
     CalcItemsWeightandCG("[id*='CAB1_Weight']", "[id*='CAB1_CG']", "[id='W_OP_CAB1Items']", "[id='CG_OP_CAB1Items']", "[id*='W_OP_']", "W_OP_CAB1Items", OPItemsWeightSubTotals, OPItemsCGArraySubtotals);
@@ -200,14 +215,12 @@ function UpdateOWEandAfert() {
     //alert("Operatings Items Weight Subtotals   =" + OPItemsWeightSubTotals.join("\n"));
     //alert("Operatings Items CG Subtotals   =" + OPItemsCGArraySubtotals.join("\n"));
 
-
-        
     //alert("Next Do operating weight items total");
     CalcSubTotalWeightandCG(OPItemsWeightSubTotals, OPItemsCGArraySubtotals, OWEWElements, OWECGElements, "[id*='W_OWE_']", "W_OWE_OPTotal", "[id='W_OWE_OPTotal']", "[id='CG_OWE_OPTotal']");
-    
+
     //alert("Next Do OWE (Operating Weight Empty) calcs");
     CalcSubTotalWeightandCG(OWEWElements, OWECGElements, ZFWWElements, ZFWCGElements, "[id*='W_ZFW_']", "W_ZFW_OWE", "[id='W_ZFW_OWE']", "[id*='CG_ZFW_OWE']");
-    
+
     //Display the point on the chart and put the MAC on the loadsheet
     OWEPoint.data[0][1] = ZFWWElements[0];
     OWEPoint.data[0][0] = GetMAC(ZFWCGElements[0], "[id='MAC_ZFW_OWE']");
@@ -223,7 +236,7 @@ function StoreTEWandCG(myArrayWeight, myArrayCG, TEWWeightElement, TEWCGElement)
         myweight = parseFloat($(this).text());
         myArrayWeight.push(myweight);
     });
-  
+
     $(TEWCGElement).each(function (i, e) {
         var myCG;
         myCG = parseFloat($(this).text());
@@ -248,7 +261,7 @@ function UpdateZFWandAfter() {
 
     //alert("Next Do Payload Weight items Total");
     CalcSubTotalWeightandCG(PLWWElementsSubTotals, PLCGArraySubTotals, ZFWWElements, ZFWCGElements, "[id*='W_ZFW_']", "W_ZFW_PLTotal", "[id='W_ZFW_PLTotal']", "[id='CG_ZFW_PLTotal']");
-    
+
 
     //alert("Next Do ZFW (Zero Fuel_Weight) calc");
     CalcSubTotalWeightandCG(ZFWWElements, ZFWCGElements, RWWElements, RWCGElements, "[id*='W_RW_']", "W_RW_ZFWTotal", "[id='W_RW_ZFWTotal']", "[id='CG_RW_ZFWTotal']");
@@ -261,12 +274,12 @@ function UpdateZFWandAfter() {
 
 function UpdateRWandAfter() {
     // Do total Fuel Weight
-    
+
     //alert("Next Do total Fuel Weight");
     CalcItemsWeightandCG("[id*='Fuel_Weight']", "[id*='Fuel_CG']", "[id='W_RW_FuelItems']", "[id='CG_RW_FuelItems']", "[id*='W_RW_']", "W_RW_FuelItems", RWWElements, RWCGElements);
-    
+
     //alert("Do RW (Ramp Weight) calc");
-    CalcSubTotalWeightandCG(RWWElements, RWCGElements,TOWWElements,TOWCGElements, "[id*='W_TOW_']", "W_TOW_RWTotal", "[id='W_TOW_RWTotal']", "[id='CG_TOW_RWTotal']");
+    CalcSubTotalWeightandCG(RWWElements, RWCGElements, TOWWElements, TOWCGElements, "[id*='W_TOW_']", "W_TOW_RWTotal", "[id='W_TOW_RWTotal']", "[id='CG_TOW_RWTotal']");
 
     TOWPoint.data[0][1] = TOWWElements[0];
     TOWPoint.data[0][0] = GetMAC(TOWCGElements[0], "[id='MAC_TOW_RWTotal']");
@@ -289,8 +302,11 @@ function UpdateLW() {
     SubStractWeight(RWWElements, RWCGElements, LWWElements, LWCGElements, "#TRPFuelWeight", "#TRPFuelCG", "#LWWeight", "#LWCG");
     LWPoint.data[0][1] = LWWElements[0];
     LWPoint.data[0][0] = GetMAC(LWCGElements[0], "[id='LWMAC']");
-   // alert("Redraw the new Landing weight = " + LWWElements[0].toString());
+    // alert("Redraw the new Landing weight = " + LWWElements[0].toString());
     LSChart = $.plot($("#LoadsheetChart"), [envelope, fuelcurve, TEWPoint, OWEPoint, ZFWPoint, RWPoint, TOWPoint, LWPoint], options);
+
+    //window.onresize = function(event) {
+     //   $.plot($("#LoadsheetChart"), [envelope, fuelcurve, TEWPoint, OWEPoint, ZFWPoint, RWPoint, TOWPoint, LWPoint], options);
 
     // Add the Flot version string to the footer
 
@@ -305,14 +321,14 @@ function UpdateLW() {
         opacity: 0.80
     }).appendTo("body");
 
-   
 
 
-    
+
+
     //LSChart.setData([envelope, fuelcurve, TEWPoint, OWEPoint, ZFWPoint, RWPoint, TOWPoint, LWPoint]);
     //LSChart.setupGrid(); //only necessary if your new data will change the axes or grid
     //LSChart.draw();
-    
+
 
 }
 
@@ -325,20 +341,20 @@ function SubStractWeight(weight1, cg1, weight2, cg2, weightElement, cgElement, R
     cg1[1] = parseFloat($(cgElement).text());
 
     tempweight = weight1[0] - weight1[1];
-    tempmoment = weight1[0]*cg1[0] - weight1[1]*cg1[1];
-    CG = tempmoment/tempweight
+    tempmoment = weight1[0] * cg1[0] - weight1[1] * cg1[1];
+    CG = tempmoment / tempweight
     //alert("Weight to add = " + weight1.join(" , "));
     //alert("CG for each weight = " + cg1.join(" , "));
 
     weight2[0] = tempweight;
     cg2[0] = CG;
     $(RemainingWeight).text(tempweight.toString());
-    $(NewCG).text(CG.toFixed(2).toString());
+    $(NewCG).text(CG.toFixed(1).toString());
 
 }
 
 
-function CalcItemsWeightandCG(WofItems, CGofItems, TotalWeight, TotalCG, ElementsGrouping,Element,WeightArray, CGArray) {
+function CalcItemsWeightandCG(WofItems, CGofItems, TotalWeight, TotalCG, ElementsGrouping, Element, WeightArray, CGArray) {
     var SubTotalWeight = 0.0;
     var myWeights = [];
     var myCG = [];
@@ -364,7 +380,7 @@ function CalcItemsWeightandCG(WofItems, CGofItems, TotalWeight, TotalCG, Element
     });
     //Calcul le centre de gravite (cg) Total
     CenterofGravity = TotalMoments / SubTotalWeight;
-   //get the index to store the value in an array
+    //get the index to store the value in an array
     var myindexgroup = GetLSElementIndex(ElementsGrouping, Element);
     WeightArray[myindexgroup] = SubTotalWeight;
     CGArray[myindexgroup] = CenterofGravity;
@@ -373,18 +389,18 @@ function CalcItemsWeightandCG(WofItems, CGofItems, TotalWeight, TotalCG, Element
 
 
     // display le poids total
-    $(TotalWeight).text(SubTotalWeight.toFixed(2).toString());
+    $(TotalWeight).text(SubTotalWeight.toFixed(1).toString());
     // display le CG total
-    $(TotalCG).text(CenterofGravity.toFixed(2).toString());
+    $(TotalCG).text(CenterofGravity.toFixed(1).toString());
 }
 
 
-function CalcSubTotalWeightandCG(myWeightArray, myCGArray,ParentWeightArray,ParentCGArray,ElementGroup,Element, subTotalWeightElement, subTotalCGElement) {
+function CalcSubTotalWeightandCG(myWeightArray, myCGArray, ParentWeightArray, ParentCGArray, ElementGroup, Element, subTotalWeightElement, subTotalCGElement) {
     var TotalWeight = 0.0
     var TotalCG = 0.0
     var TotalMoments = 0.0
     var nbofElements = myWeightArray.length;
-    
+
 
     //Calcul le moment total
     for (var j = 0; j < nbofElements; j++) {
@@ -394,13 +410,13 @@ function CalcSubTotalWeightandCG(myWeightArray, myCGArray,ParentWeightArray,Pare
     // Fait la somme des poids
     //Calcul le centre de gravite (cg) Total
     TotalCG = TotalMoments / TotalWeight;
-    //alert("Total Weight = " + TotalWeight.toFixed(2).toString() + ", Total CG = " + TotalCG.toFixed(2).toString());
-    $(subTotalWeightElement).text(TotalWeight.toFixed(2).toString());
-    $(subTotalCGElement).text(TotalCG.toFixed(2).toString());
+    //alert("Total Weight = " + TotalWeight.toFixed(1).toString() + ", Total CG = " + TotalCG.toFixed(1).toString());
+    $(subTotalWeightElement).text(TotalWeight.toFixed(1).toString());
+    $(subTotalCGElement).text(TotalCG.toFixed(1).toString());
     //get the index to store the value in an array
     var myindexgroup = GetLSElementIndex(ElementGroup, Element);
     ParentWeightArray[myindexgroup] = TotalWeight;
-    ParentCGArray[myindexgroup]= TotalCG;
+    ParentCGArray[myindexgroup] = TotalCG;
 
     //ParentWeightArray.splice(myindexgroup, 0, TotalWeight);
     //ParentCGArray.splice(myindexgroup, 0, TotalCG);
@@ -412,16 +428,16 @@ function CalcSubTotalWeightandCG(myWeightArray, myCGArray,ParentWeightArray,Pare
 }
 
 // Get the index element in a group of element
- function GetLSElementIndex(ElementGroup, Element) {
-     var elementIndex;/* store the index of #element here */
-     $(ElementGroup).each(function (index) {
+function GetLSElementIndex(ElementGroup, Element) {
+    var elementIndex;/* store the index of #element here */
+    $(ElementGroup).each(function (index) {
         var someText = $(this).attr('id');
         if (someText == Element) {
             elementIndex = index;
             //alert("GetLSElementIndex is: " + someText + " and my index in the group element is " + index);
         }
     });
-     return elementIndex; /* will return index of #element if found otherwise will return undefined */
+    return elementIndex; /* will return index of #element if found otherwise will return undefined */
 }
 
 
@@ -463,11 +479,11 @@ function receivedText() {
     alert(envelope.lenght);
 }
 
-function GetMAC(ToConvert,MACElement) {
+function GetMAC(ToConvert, MACElement) {
     var mymac = 0;
     mymac = (ToConvert - LEMAC) / MAC * 100;
-    //alert(MACElement + " = "+mymac.toFixed(2).toString());
-    $(MACElement).text(mymac.toFixed(2).toString());
+    //alert(MACElement + " = "+mymac.toFixed(1).toString());
+    $(MACElement).text(mymac.toFixed(1).toString());
 
     return mymac;
 }
